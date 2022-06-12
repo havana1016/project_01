@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="project_01:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02c26ff4-74f6-4b22-82e5-20150f802932" name="Changes" comment="" />
+    <list default="true" id="02c26ff4-74f6-4b22-82e5-20150f802932" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Controller/fController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Controller/fController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Controller/mController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Controller/mController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Controller/pController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Controller/pController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Dto/fDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Dto/fDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Dto/mDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Dto/mDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Dto/pDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Dto/pDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/fRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/fRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/mRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/mRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/pRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/pRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/fService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/fService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/mService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/mService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/pService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/pService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/hController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/hController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/mMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/mMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/pMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/pMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/friend/myfr.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/friend/myfr.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/save-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/save-form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/save-form1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/save-form1.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +53,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -41,31 +80,125 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/development_HSS/source/spring_framework/project_01/src/main/resources/mapper",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/development_HSS/source/spring_framework/project_01/src/main/resources/mapper&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;aeac2c31e88463ef2e8a36fd6ec694d6&quot;
   },
-  "keyToStringList": {
-    "GitStage.ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\resources\mapper" />
+      <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\resources\css" />
+      <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\resources\js" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\resources" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\WEB-INF" />
-      <recent name="D:\development_HSS\source\spring_framework\project_01" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.62" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.62" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="project_01:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="01e95f78-2a1f-4c04-a3ec-630daa9dd59e" />
+        <option name="HTTP_PORT" value="8085" />
+        <option name="JNDI_PORT" value="1098" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="63704" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="project_01:war exploded" />
+        </option>
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -75,8 +208,54 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654562751571</updated>
-      <workItem from="1654562753024" duration="1637000" />
+      <workItem from="1654562753024" duration="9319000" />
+      <workItem from="1654644711609" duration="56994000" />
+      <workItem from="1654758234941" duration="13572000" />
+      <workItem from="1654817584813" duration="25987000" />
     </task>
+    <task id="LOCAL-00001" summary="메신져 개인 프로젝트 시작">
+      <created>1654567311453</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654567311453</updated>
+    </task>
+    <task id="LOCAL-00002" summary="인덱스 페이지 테스트로 완성 &#10;로그인 페이지 구현중">
+      <created>1654602459862</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654602459863</updated>
+    </task>
+    <task id="LOCAL-00003" summary="로그인 페이지,로그인후 보이는 메인 페이지 개발중&#10;메인 페이지 상단 검색창에 친구 아이디를 넣고 버튼을 누르면 모달창으로 친구의 프로필 사진과 아이디가 나오고 옆에 친구 신청하기 버튼 나옴,&#10;없을시에는 아이디를 확인하라는 문구 나옴 &#10;친구신청 버튼 작동 개발중">
+      <created>1654685948090</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654685948091</updated>
+    </task>
+    <task id="LOCAL-00004" summary="친구신청 버튼 클릭시 친구신청 테이블에 세이브까지 개발&#10;웹소켓 공부해서 반영해야함.&#10;시간이 부족할듯 내일부터 웹소켓 공부해야함">
+      <created>1654687819303</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654687819303</updated>
+    </task>
+    <task id="LOCAL-00005" summary="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함">
+      <created>1654773963942</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1654773963942</updated>
+    </task>
+    <task id="LOCAL-00006" summary="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함&#10;친구 수락 완료,친구 신청 완료,친구목록 더블클릭시 채팅을 위한 모달창 띄우기 완료">
+      <created>1654848923883</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1654848923883</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,5 +274,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="메신져 개인 프로젝트 시작" />
+    <MESSAGE value="인덱스 페이지 테스트로 완성 &#10;로그인 페이지 구현중" />
+    <MESSAGE value="로그인 페이지,로그인후 보이는 메인 페이지 개발중&#10;메인 페이지 상단 검색창에 친구 아이디를 넣고 버튼을 누르면 모달창으로 친구의 프로필 사진과 아이디가 나오고 옆에 친구 신청하기 버튼 나옴,&#10;없을시에는 아이디를 확인하라는 문구 나옴 &#10;친구신청 버튼 작동 개발중" />
+    <MESSAGE value="친구신청 버튼 클릭시 친구신청 테이블에 세이브까지 개발&#10;웹소켓 공부해서 반영해야함.&#10;시간이 부족할듯 내일부터 웹소켓 공부해야함" />
+    <MESSAGE value="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함" />
+    <MESSAGE value="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함&#10;친구 수락 완료,친구 신청 완료,친구목록 더블클릭시 채팅을 위한 모달창 띄우기 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함&#10;친구 수락 완료,친구 신청 완료,친구목록 더블클릭시 채팅을 위한 모달창 띄우기 완료" />
   </component>
 </project>

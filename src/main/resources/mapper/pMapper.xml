@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="pfr">
+<insert id="save">
+    insert into pftable (pid,yid,yfname,pfname) values (#{pid},#{yid},#{yfname},#{pfname})
+</insert>
+    <select id="pfrc" resultType="pdto">
+        select * from pftable where pid=#{pid} and yid=#{yid} or pid=#{yid} and yid=#{pid}
+    </select>
+<select id="plz" resultType="pdto">
+    select * from pftable where pid=#{pid} and fbool=0
+</select>
+    <select id="yes" resultType="pdto">
+        select * from pftable where yid=#{yid} and fbool=0
+    </select>
+<!--    select count(o_id) from orders where c_id=2;-->
+    <select id="pcount" resultType="int">
+        select count(pid) from pftable where yid=#{yid} and fbool=0
+    </select>
+    <update id="yesf">
+        update pftable set fbool=1 where pid=#{pid} and yid=#{yid}
+    </update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,6 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.icia.ex.dto.PostDTO" alias="post" />
+        <typeAlias type="project.Dto.mDto" alias="mdto" />
+        <typeAlias type="project.Dto.pDto" alias="pdto" />
+        <typeAlias type="project.Dto.fDto" alias="fdto" />
     </typeAliases>
 </configuration>
