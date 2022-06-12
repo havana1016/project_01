@@ -16,16 +16,7 @@
     <script src="\resources\js\jquery.js"></script>
 
     <style>
-        /*body{*/
-        /*    !*/ background-color: darkgray;*!*/
-        /*    height: 100vh;*/
-        /*    background-image: url("https://wallpapercave.com/wp/wp4415444.jpg");*/
 
-        /*    !*background-image: url("https://allhdwallpapers.com/wp-content/uploads/2018/03/Supreme-Wallpapers-desktop-and-mobile-HD-18.jpg");*!*/
-        /*    !*background-image: url("https://wallpapercave.com/wp/wp3904942.jpg");*!*/
-        /*    background-repeat : no-repeat;*/
-        /*    background-size : cover;*/
-        /*}*/
         .form-control:focus {
             border-color: #8c8f91;
             box-shadow: 0 0 0 0.2rem rgba(74, 74, 75, 0.25);
