@@ -25,8 +25,48 @@
             border:gray solid 1px;
             height: 1000px;
         }
+        .arrow_box {
+            position: relative;
+            background: #88b7d5;
+            border: 4px solid #c2e1f5;
+        }
+        .arrow_box:after, .arrow_box:before {
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: "";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .arrow_box:after {
+            border-color: rgba(136, 183, 213, 0);
+            border-bottom-color: #88b7d5;
+            border-width: 30px;
+            margin-left: -30px;
+        }
+        .arrow_box:before {
+            border-color: rgba(194, 225, 245, 0);
+            border-bottom-color: #c2e1f5;
+            border-width: 36px;
+            margin-left: -36px;
+        }
+
+
+
     </style>
     <script>
+
+        // <!-- 채팅 스크롤 하단으로 보내기 -->
+        // $('#msgbody').scrollTop($('#msgbody')[0].scrollHeight);
+
+
+
+        출처: https://mjmjmj98.tistory.com/40 [Live passionate😎:티스토리]
+
+
         function enter() {
             if (window.event.keyCode == 13) {
                 document.getElementById("modalbtn").click();
@@ -149,21 +189,38 @@
 
                 }
             })
+
+
         }
             function mbtn(fid,ffname){
-                console.log(fid+" "+ffname)
+
                 let zone=document.getElementById("exampleModalLabel")
+                let footer=document.getElementById("footer")
                 let html='<table><tr><td>'
                 html+='<img src="/upload/'+ffname+'" height="70px" width="70px"></td><td>'
-                html+=fid+'</td></tr></table>'
+                html+='<h3 class="mt-4" style="margin-left: 30px">'+fid+'</h3></td></tr></table>'
+
                 zone.innerHTML=html;
-                document.getElementById("mbtn11").click()
+                let html2='<textarea class="form-control mb-2" id="msg" cols="20" wrap="hard"></textarea>'
+                html2+='<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closemodal" onclick="clear()">Close</button>'
+                html2+='<button type="button" class="btn btn-primary" id="sendbtn" onclick="savemsg('+"'"+fid+"'"+')">Send</button>'
+                // html2+='<button type="button" class="btn btn-primary" id="sendbtn" onclick="savemsg('+"'"+fid+"','"+msg+"'"+')">Send</button>'
+                footer.innerHTML=html2;
+
+
+                findmsg(fid)
+
+
+                // document.getElementById("mbtn11").click()
+
+
 
 
 
 
             }
         function flist(){
+
             let flist=document.getElementById("table");
             $.ajax({
                 url:"/fr/findall",
@@ -174,7 +231,8 @@
                     console.log("flist suc")
                     let html='<table class="table table-hover">'
                     for(let i in e){
-                        html+='<tr ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+')"><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
+                        // html+='<tr ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
+                        html+='<tr onclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "data-bs-toggle="modal" data-bs-target="#hssModal"><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
                         // html+='<tr ondblclick="mbtn()"><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
                         html+='<td style="text-align: center"><button class="btn btn-outline-secondary mt-4" >버튼버튼</button></td></tr>'}
                     html+='</table>'
@@ -197,6 +255,113 @@
             })
 
         }
+
+
+
+            function test() {
+            document.getElementById("msgbody").scrollTop = document.getElementById("msgbody").scrollHeight;
+            //     let myDiv = document.getElementById("msgbody");
+            //     myDiv.scrollTop = myDiv.scrollHeight;
+
+        }
+
+
+
+
+        function findmsg(fid){
+
+            let body=document.getElementById("msgbody")
+            let zone=document.getElementById("exampleModalLabel")
+
+            $.ajax({
+                url:"/msg/findmsg",
+                type:"get",
+                data:{"mset":'${sessionScope.logmem.mid}',"mget":fid},
+                dataType:"json",
+                success:function (e){
+                    console.log("findmsg suc")
+                    let html='<table class="table">'
+                    for(let i in e){
+                        html+='<tr><td>'
+                        html+="'"+e[i].mset+"'"
+                        html+='</td><td>'
+                        html+="'"+e[i].mtime+"'"
+                        if(e[i].mset=='${sessionScope.logmem.mid}'){
+                        html+='</td></tr><tr style="text-align: right;">'
+                            html+='<td >'+e[i].getint+'<div style="padding:10px; background-color:#77FF0F; border-radius: 5px">'
+                            html+=e[i].msg+'</div></td></tr>'
+
+                        }
+                        else{
+                            html+='</td></tr><tr style="text-align: left">'
+                            html+='<td ><div id="text" style="padding:10px; background-color:#E7E8EB; border-radius: 5px">'
+                            html+=e[i].msg+'</div></td></tr>'
+                            // html+=e[i].msg+e[i].setint
+                            // html+='</div></td></tr>'
+                        }
+
+                        // html+="'"+e[i].msg+"'"
+                        // html+='</div></td></tr>'
+                    }
+
+                    html+='</table>'
+                    body.innerHTML=html;
+
+                    setTimeout(function() {
+                        test();
+                    }, 150);
+                    function timer(){
+                        findmsg(fid)
+                    }
+
+                    let timerVar = setTimeout( timer, 1000);
+                    // setTimeout(function (){
+                    // findmsg(fid)},1000
+                    //
+                    // )
+                    $("#closemodal,#xbtn").click(function (){
+                        clearTimeout(timerVar);
+                    })
+
+
+
+                },
+                error:function (e){
+                    console.log("findmsg err")
+
+                }
+
+
+            })}
+
+
+
+
+        function savemsg(fid){
+            let msg=document.getElementById("msg");
+
+            $.ajax({
+                url:"/msg/save",
+                data:{"mset":'${sessionScope.logmem.mid}',"mget":fid,"msg":msg.value},
+                type:"get",
+                dataType:"text",
+                success:function (e){
+                    console.log("savemsg suc")
+                    findmsg(fid)
+                    msg.value=null
+                    msg.focus()
+
+                },
+                error:function (e){
+                    console.log("savemsg err")
+
+                }
+
+
+            })
+        }
+
+
     </script>
 </head>
 <body onload="pcount(),flist()">
@@ -271,25 +436,30 @@
 
 
 <!--  메시지 Modal -->
-<div class="modal fade" id="hssModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+<div class="modal fade hss" id="hssModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<%--    <div class="modal-dialog hss modal-dialog-scrollable" id="abc">--%>
+    <div class="modal-dialog hss " id="abc">
+        <div class="modal-content hss">
+            <div class="modal-header hss">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
 <%--                Modal title--%>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" id="xbtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body hss" id="msgbody" style="overflow: auto;height: 500px; ">
                 ...
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="modal-footer hss" id="footer">
+<%--                <textarea class="form-control mb-2" name="msg"></textarea>--%>
+<%--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--%>
+<%--                <button type="button" class="btn btn-primary" id="sendbtn">Send</button>--%>
             </div>
         </div>
     </div>
 </div>
+<script>
 
+
+</script>
 
 </body>
 </html>

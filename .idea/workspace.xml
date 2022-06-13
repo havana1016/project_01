@@ -10,32 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02c26ff4-74f6-4b22-82e5-20150f802932" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Controller/msgController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Dto/msgDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Repository/msgRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Service/msgService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/msgMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Controller/fController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Controller/fController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Controller/mController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Controller/mController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Controller/pController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Controller/pController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Dto/fDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Dto/fDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Dto/mDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Dto/mDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Dto/pDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Dto/pDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/fRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/fRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/mRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/mRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/pRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/pRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/fService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/fService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/mService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/mService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/pService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/pService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/hController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/hController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/mMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/mMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/pMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/pMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/friend/myfr.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/friend/myfr.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/save-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/save-form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/save-form1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/save-form1.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,32 +62,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/development_HSS/source/spring_framework/project_01/src/main/resources/mapper&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;aeac2c31e88463ef2e8a36fd6ec694d6&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/development_HSS/source/spring_framework/project_01/src/main/webapp/resources/css/img",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
+    "spring.configuration.checksum": "aeac2c31e88463ef2e8a36fd6ec694d6"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;,
-      &quot;module&quot;,
-      &quot;repository&quot;
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\resources\css\img" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\resources\mapper" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\resources\css" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\resources\js" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\resources" />
-      <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\WEB-INF" />
     </key>
   </component>
   <component name="RunManager">
@@ -211,7 +193,8 @@
       <workItem from="1654562753024" duration="9319000" />
       <workItem from="1654644711609" duration="56994000" />
       <workItem from="1654758234941" duration="13572000" />
-      <workItem from="1654817584813" duration="26011000" />
+      <workItem from="1654817584813" duration="47834000" />
+      <workItem from="1655103070282" duration="15780000" />
     </task>
     <task id="LOCAL-00001" summary="메신져 개인 프로젝트 시작">
       <created>1654567311453</created>
@@ -255,7 +238,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654848923883</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함&#10;친구 수락 완료,친구 신청 완료,친구목록 더블클릭시 채팅을 위한 모달창 띄우기 완료">
+      <created>1655076979282</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655076979282</updated>
+    </task>
+    <task id="LOCAL-00008" summary="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함&#10;친구 수락 완료,친구 신청 완료,친구목록 더블클릭시 채팅을 위한 모달창 띄우기 완료">
+      <created>1655077055746</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655077055746</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

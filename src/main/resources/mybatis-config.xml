@@ -6,5 +6,6 @@
         <typeAlias type="project.Dto.mDto" alias="mdto" />
         <typeAlias type="project.Dto.pDto" alias="pdto" />
         <typeAlias type="project.Dto.fDto" alias="fdto" />
+        <typeAlias type="project.Dto.msgDto" alias="msg" />
     </typeAliases>
 </configuration>

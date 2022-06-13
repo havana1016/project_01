@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="msg">
+<insert id="save">
+    insert into msgtable (mset,mget,msg,mtime) values (#{mset},#{mget},#{msg},now())
+</insert>
+<select id="findmsg" resultType="msg">
+    select * from msgtable where mset=#{mset} and mget=#{mget} or mset=#{mget} and mget=#{mset}
+</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
