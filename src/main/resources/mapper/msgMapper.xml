@@ -13,6 +13,9 @@
     <update id="seeint">
         update msgtable set seeint=0 where mset=#{mget} and mget=#{mset}
     </update>
+    <select id="count" resultType="int">
+        select count(seeint) from msgtable where mset=#{mget} and mget=#{mset} and seeint=1
+    </select>
 </mapper>
 
 

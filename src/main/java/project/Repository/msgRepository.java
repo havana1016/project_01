@@ -23,4 +23,8 @@ public class msgRepository {
     public int seeint(msgDto mem) {
         return sql.update("msg.seeint",mem);
     }
+
+    public int msgcount(msgDto msg) {
+        return sql.selectOne("msg.count",msg);
+    }
 }

@@ -28,6 +28,9 @@ public class msgController {
             return "ok";
         }return null;
     }
-
+    @GetMapping("count")
+    @ResponseBody int count(@ModelAttribute msgDto mem){
+        return msgs.mgscount(mem);
+    }
 
 }

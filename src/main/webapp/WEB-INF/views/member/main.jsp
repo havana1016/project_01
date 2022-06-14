@@ -220,8 +220,8 @@
 
             }
         function flist(){
-
-            let flist=document.getElementById("table");
+            pcount()
+            let flistz=document.getElementById("table");
             $.ajax({
                 url:"/fr/findall",
                 type:"get",
@@ -231,28 +231,64 @@
                     console.log("flist suc")
                     let html='<table class="table table-hover">'
                     for(let i in e){
-                        html+='<tr ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
+                             let count = msgcount('${sessionScope.logmem.mid}',e[i].fid);
+
+                              if(count>0){
+                        html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 id="msgcount11"><span class="badge bg-secondary mt-2">New '+count+'</span></h4><h2 class="">'+e[i].fid+'</h2></td>';}
+                              else{
+                                  html+='<tr id="btndb" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 style="margin-top: 30px">'+e[i].fid+'</h2></td>';}
+                        //
+                        html+='<td style="text-align: center"><button id="btbt" class="btn btn-outline-secondary mt-4" >버튼버튼</button></td><td><td></tr>'
+                    }
                         // html+='<tr onclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "data-bs-toggle="modal" data-bs-target="#hssModal"><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
-                        // html+='<tr ondblclick="mbtn()"><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
-                        html+='<td style="text-align: center"><button class="btn btn-outline-secondary mt-4" >버튼버튼</button></td></tr>'}
+
+
                     html+='</table>'
-                    flist.innerHTML=html;
+                    flistz.innerHTML=html;
+
+                    function timer(){
+                        flist()
+                    }
+
+                    let timerVar1 =setTimeout( timer, 2000);
+                    // clearTimeout(timerVar1);
+                    $("#btndb,#btndb1").dblclick(function (){
+
+                        clearTimeout(timerVar1);
+                    })
+
+
+                    function msgcount(mset,mget){
+                        let result=""
+                        $.ajax({
+                            url:"/msg/count",
+                            type:"get",
+                            data:{"mset":mset,"mget":mget},
+                            dataType:"text",
+                            async: false,
+                            success:function (e){
+                                console.log("msgcount suc : "+e)
+                                result=e;
+
+                            },
+                            error:function (e){
+                                console.log("msgcount err")
+                            }
+                        });
+
+                        return result;
+                    }
 
 
 
 
-
-
-
-
-
-
-                },
+                        },
                 error:function (e){
                     console.log("flist err")
 
                 }
-            })
+            });
+
 
         }
 
@@ -264,7 +300,26 @@
             //     myDiv.scrollTop = myDiv.scrollHeight;
 
         }
-
+        // function msgcount(mset,mget){
+        //     let zone=document.getElementById("countzone")
+        //     $.ajax({
+        //         url:"/msg/count",
+        //         type:"get",
+        //         data:{"mset":mset,"mget":mget},
+        //         dataType:"text",
+        //         success:function (e){
+        //             console.log("msgcount suc : "+e)
+        //             if(e>0){
+        //                 zone.innerHTML='<span class="badge bg-secondary mt-2 ">New</span> &nbsp'+e;
+        //             }
+        //
+        //         },
+        //         error:function (e){
+        //             console.log("msgcount err")
+        //
+        //         }
+        //     })
+        // }
 
 
 
@@ -396,6 +451,7 @@
                     // )
                     $("#closemodal,#xbtn").click(function (){
                         clearTimeout(timerVar);
+                        location.href="/member/main"
                     })
 
 
@@ -438,8 +494,8 @@
 
     </script>
 </head>
-<body onload="pcount(),flist()">
-<div style="width: 600px;padding: 30px" >
+<body onload="flist()">
+<div style="width: 550px;padding: 30px" >
    <div class="row justify-content-between">
     <div class="mb-4 col-4">
     <button class="btn btn-secondary" onclick="location.href='/pfr/myfr'" >친구관리</button>
@@ -467,7 +523,7 @@
                                                             alt="" width="100px" height="100px" class="dot" style="border-radius: 30%"></td>
         </tr>
     </table>
-    <div>
+    <div class="mt-2">
         <div id="table" class="htable" style="height: 600px; overflow: auto">
 
 
@@ -510,7 +566,7 @@
 
 
 <!--  메시지 Modal -->
-<div class="modal fade hss" id="hssModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div style="width: 550px" class="modal fade hss" id="hssModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <%--    <div class="modal-dialog hss modal-dialog-scrollable" id="abc">--%>
     <div class="modal-dialog hss " id="abc">
         <div class="modal-content hss">

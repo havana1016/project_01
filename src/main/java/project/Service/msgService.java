@@ -22,4 +22,8 @@ public class msgService {
     public int seeint(msgDto mem) {
         return msgr.seeint(mem);
     }
+
+    public int mgscount(msgDto msg) {
+        return msgr.msgcount(msg);
+    }
 }
