@@ -18,4 +18,8 @@ public class msgService {
     public List<msgDto> findmsg(msgDto mem) {
         return msgr.findmsg(mem);
     }
+
+    public int seeint(msgDto mem) {
+        return msgr.seeint(mem);
+    }
 }

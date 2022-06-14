@@ -8,6 +8,5 @@ public class msgDto {
     String mget;
     String msg;
     String mtime;
-    int setint;
-    int getint;
+    int seeint;
 }

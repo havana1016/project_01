@@ -194,7 +194,7 @@
       <workItem from="1654644711609" duration="56994000" />
       <workItem from="1654758234941" duration="13572000" />
       <workItem from="1654817584813" duration="47834000" />
-      <workItem from="1655103070282" duration="15780000" />
+      <workItem from="1655103070282" duration="24434000" />
     </task>
     <task id="LOCAL-00001" summary="메신져 개인 프로젝트 시작">
       <created>1654567311453</created>
@@ -252,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655077055746</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="채팅및 채팅 페이지 스크롤 구현 완료">
+      <created>1655121076610</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1655121076611</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +284,7 @@
     <MESSAGE value="친구신청 버튼 클릭시 친구신청 테이블에 세이브까지 개발&#10;웹소켓 공부해서 반영해야함.&#10;시간이 부족할듯 내일부터 웹소켓 공부해야함" />
     <MESSAGE value="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함" />
     <MESSAGE value="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함&#10;친구 수락 완료,친구 신청 완료,친구목록 더블클릭시 채팅을 위한 모달창 띄우기 완료" />
-    <option name="LAST_COMMIT_MESSAGE" value="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함&#10;친구 수락 완료,친구 신청 완료,친구목록 더블클릭시 채팅을 위한 모달창 띄우기 완료" />
+    <MESSAGE value="채팅및 채팅 페이지 스크롤 구현 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="채팅및 채팅 페이지 스크롤 구현 완료" />
   </component>
 </project>

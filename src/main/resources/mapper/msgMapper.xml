@@ -10,6 +10,9 @@
 <select id="findmsg" resultType="msg">
     select * from msgtable where mset=#{mset} and mget=#{mget} or mset=#{mget} and mget=#{mset}
 </select>
+    <update id="seeint">
+        update msgtable set seeint=0 where mset=#{mget} and mget=#{mset}
+    </update>
 </mapper>
 
 

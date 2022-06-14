@@ -193,7 +193,7 @@
 
         }
             function mbtn(fid,ffname){
-
+                document.getElementById("mbtn11").click()
                 let zone=document.getElementById("exampleModalLabel")
                 let footer=document.getElementById("footer")
                 let html='<table><tr><td>'
@@ -202,7 +202,7 @@
 
                 zone.innerHTML=html;
                 let html2='<textarea class="form-control mb-2" id="msg" cols="20" wrap="hard"></textarea>'
-                html2+='<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closemodal" onclick="clear()">Close</button>'
+                html2+='<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closemodal" >Close</button>'
                 html2+='<button type="button" class="btn btn-primary" id="sendbtn" onclick="savemsg('+"'"+fid+"'"+')">Send</button>'
                 // html2+='<button type="button" class="btn btn-primary" id="sendbtn" onclick="savemsg('+"'"+fid+"','"+msg+"'"+')">Send</button>'
                 footer.innerHTML=html2;
@@ -231,8 +231,8 @@
                     console.log("flist suc")
                     let html='<table class="table table-hover">'
                     for(let i in e){
-                        // html+='<tr ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
-                        html+='<tr onclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "data-bs-toggle="modal" data-bs-target="#hssModal"><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
+                        html+='<tr ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
+                        // html+='<tr onclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "data-bs-toggle="modal" data-bs-target="#hssModal"><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
                         // html+='<tr ondblclick="mbtn()"><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
                         html+='<td style="text-align: center"><button class="btn btn-outline-secondary mt-4" >버튼버튼</button></td></tr>'}
                     html+='</table>'
@@ -268,11 +268,77 @@
 
 
 
+        <%--function findmsg3(fid){--%>
+
+        <%--    let body=document.getElementById("msgbody")--%>
+        <%--    let zone=document.getElementById("exampleModalLabel")--%>
+
+        <%--    $.ajax({--%>
+        <%--        url:"/msg/findmsg",--%>
+        <%--        type:"get",--%>
+        <%--        data:{"mset":'${sessionScope.logmem.mid}',"mget":fid},--%>
+        <%--        dataType:"json",--%>
+        <%--        success:function (e){--%>
+        <%--            console.log("findmsg suc")--%>
+        <%--            let html='<table class="table">'--%>
+        <%--            for(let i in e){--%>
+        <%--                html+='<tr><td>'--%>
+        <%--                html+="'"+e[i].mset+"'"--%>
+        <%--                html+='</td><td>'--%>
+        <%--                html+="'"+e[i].mtime+"'"--%>
+        <%--                if(e[i].mset=='${sessionScope.logmem.mid}'){--%>
+        <%--                html+='</td></tr><tr style="text-align: right;">'--%>
+        <%--                    html+='<td ><div style="padding:10px; background-color:#77FF0F; border-radius: 5px">'--%>
+        <%--                    html+=e[i].msg+'</div></td></tr>'--%>
+
+        <%--                }--%>
+        <%--                else{--%>
+        <%--                    html+='</td></tr><tr style="text-align: left">'--%>
+        <%--                    html+='<td ><div id="text" style="padding:10px; background-color:#E7E8EB; border-radius: 5px">'--%>
+        <%--                    html+=e[i].msg+'</div></td></tr>'--%>
+        <%--                    // html+=e[i].msg+e[i].setint--%>
+        <%--                    // html+='</div></td></tr>'--%>
+        <%--                }--%>
+
+        <%--                // html+="'"+e[i].msg+"'"--%>
+        <%--                // html+='</div></td></tr>'--%>
+        <%--            }--%>
+
+        <%--            html+='</table>'--%>
+        <%--            body.innerHTML=html;--%>
+
+        <%--            setTimeout(function() {--%>
+        <%--                test();--%>
+        <%--            }, 150);--%>
+        <%--            function timer(){--%>
+        <%--                findmsg(fid)--%>
+        <%--            }--%>
+
+        <%--            let timerVar = setTimeout( timer, 1000);--%>
+        <%--            // setTimeout(function (){--%>
+        <%--            // findmsg(fid)},1000--%>
+        <%--            //--%>
+        <%--            // )--%>
+        <%--            $("#closemodal,#xbtn").click(function (){--%>
+        <%--                clearTimeout(timerVar);--%>
+        <%--            })--%>
+
+
+
+        <%--        },--%>
+        <%--        error:function (e){--%>
+        <%--            console.log("findmsg err")--%>
+
+        <%--        }--%>
+
+
+        <%--    })}--%>
+
         function findmsg(fid){
 
             let body=document.getElementById("msgbody")
             let zone=document.getElementById("exampleModalLabel")
-
+            let html='<div>'
             $.ajax({
                 url:"/msg/findmsg",
                 type:"get",
@@ -280,31 +346,40 @@
                 dataType:"json",
                 success:function (e){
                     console.log("findmsg suc")
-                    let html='<table class="table">'
                     for(let i in e){
-                        html+='<tr><td>'
-                        html+="'"+e[i].mset+"'"
-                        html+='</td><td>'
-                        html+="'"+e[i].mtime+"'"
+
+
                         if(e[i].mset=='${sessionScope.logmem.mid}'){
-                        html+='</td></tr><tr style="text-align: right;">'
-                            html+='<td >'+e[i].getint+'<div style="padding:10px; background-color:#77FF0F; border-radius: 5px">'
-                            html+=e[i].msg+'</div></td></tr>'
+                            if(e[i].seeint!=0){
+                            html+='<div class="row justify-content-between" style="padding-right: 0;margin-top: 30px">'
+                                html+='<div class="col-1">'
+                                    html+=e[i].seeint
+                                html+='</div>'
+                            html+='<div class="col-5" style="text-align: right">'
+                                html+=e[i].mtime
+                                html+='</div></div>';
+                           }
+                            else {
+                                html += '<div style="text-align: right;margin-top: 30px">' + e[i].mtime + '</div>'
+
+
+                            }
+                                html += '<div style="text-align:right;  padding:10px; background-color:#C8EEF3; border-radius: 5px">'
+                            html+=e[i].msg+'</div>'
 
                         }
                         else{
-                            html+='</td></tr><tr style="text-align: left">'
-                            html+='<td ><div id="text" style="padding:10px; background-color:#E7E8EB; border-radius: 5px">'
-                            html+=e[i].msg+'</div></td></tr>'
-                            // html+=e[i].msg+e[i].setint
-                            // html+='</div></td></tr>'
+
+                            html+='<div style="text-align: left; margin-top: 30px">'+e[i].mtime+'</div>'
+                            html+='<div style="text-align:left;  padding:10px; background-color:#E7E8EB; border-radius: 5px">'
+                            html+=e[i].msg+'</div>'
                         }
 
                         // html+="'"+e[i].msg+"'"
                         // html+='</div></td></tr>'
                     }
 
-                    html+='</table>'
+
                     body.innerHTML=html;
 
                     setTimeout(function() {
@@ -336,7 +411,6 @@
 
 
 
-
         function savemsg(fid){
             let msg=document.getElementById("msg");
 
@@ -365,7 +439,7 @@
     </script>
 </head>
 <body onload="pcount(),flist()">
-<div style="width: 600px;height: 1500px;padding: 30px" >
+<div style="width: 600px;padding: 30px" >
    <div class="row justify-content-between">
     <div class="mb-4 col-4">
     <button class="btn btn-secondary" onclick="location.href='/pfr/myfr'" >친구관리</button>
@@ -394,7 +468,7 @@
         </tr>
     </table>
     <div>
-        <div id="table" class="htable">
+        <div id="table" class="htable" style="height: 600px; overflow: auto">
 
 
         </div>

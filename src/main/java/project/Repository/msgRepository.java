@@ -19,4 +19,8 @@ public class msgRepository {
 
         return sql.selectList("msg.findmsg",mem);
     }
+
+    public int seeint(msgDto mem) {
+        return sql.update("msg.seeint",mem);
+    }
 }
