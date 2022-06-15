@@ -69,7 +69,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/development_HSS/source/spring_framework/project_01/src/main/webapp/resources/css/img",
+    "last_opened_file_path": "D:/development_HSS/source/spring_framework/project_01/src/main/webapp/WEB-INF/views/member",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
     "spring.configuration.checksum": "aeac2c31e88463ef2e8a36fd6ec694d6"
   },
@@ -83,11 +83,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\WEB-INF\views\member" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\resources\css\img" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\resources\mapper" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\resources\css" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\resources\js" />
-      <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -194,7 +194,7 @@
       <workItem from="1654644711609" duration="56994000" />
       <workItem from="1654758234941" duration="13572000" />
       <workItem from="1654817584813" duration="47834000" />
-      <workItem from="1655103070282" duration="49525000" />
+      <workItem from="1655103070282" duration="80585000" />
     </task>
     <task id="LOCAL-00001" summary="메신져 개인 프로젝트 시작">
       <created>1654567311453</created>
@@ -266,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655171980244</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="상대방이 나에게 메시지 보냈을때 메인 화면에서 확인하지 않은 메시지 갯수표시 읽으면 채팅장 내의 숫자 사라짐 ,&#10;채팅창 내에서의 경우의 수들 계속 수정중 &#10;기능 상 구현 완성되면 css다듬기.">
+      <created>1655204975366</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1655204975366</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +300,7 @@
     <MESSAGE value="친구 관리 탭에서 내가 신청한 친구 목록&#10;나를 신청한 친구 목록 구현&#10;메인페이지 새로들어온 친구 신청 갯수 구현&#10;갯수 표현한 div클릭시 나를 신청한 친구 목록 진입 개발하고&#10;진입해서 친구 수락 개발 해야함&#10;친구 수락 완료,친구 신청 완료,친구목록 더블클릭시 채팅을 위한 모달창 띄우기 완료" />
     <MESSAGE value="채팅및 채팅 페이지 스크롤 구현 완료" />
     <MESSAGE value="상대방이 메시지를 아직 읽지 않았을때 1표시 읽으면 1이 사라짐(카톡처럼)&#10;안 읽은 메시지가 존재할때 알림 개발중" />
-    <option name="LAST_COMMIT_MESSAGE" value="상대방이 메시지를 아직 읽지 않았을때 1표시 읽으면 1이 사라짐(카톡처럼)&#10;안 읽은 메시지가 존재할때 알림 개발중" />
+    <MESSAGE value="상대방이 나에게 메시지 보냈을때 메인 화면에서 확인하지 않은 메시지 갯수표시 읽으면 채팅장 내의 숫자 사라짐 ,&#10;채팅창 내에서의 경우의 수들 계속 수정중 &#10;기능 상 구현 완성되면 css다듬기." />
+    <option name="LAST_COMMIT_MESSAGE" value="상대방이 나에게 메시지 보냈을때 메인 화면에서 확인하지 않은 메시지 갯수표시 읽으면 채팅장 내의 숫자 사라짐 ,&#10;채팅창 내에서의 경우의 수들 계속 수정중 &#10;기능 상 구현 완성되면 css다듬기." />
   </component>
 </project>

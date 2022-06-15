@@ -47,19 +47,7 @@
 
     </style>
 
-    <style>
-        .fbox{
-            /*border:darkgray solid 1px;*/
-            background-color:#C8EEF3;
-            border-radius: 0;
-            border-top: 0;
-            border-bottom: 0;
-            /*width:400px;*/
-            height: 230px;
-            padding:30px 30px 10px 30px ;
-            text-align: center;"
-        }
-    </style>
+
     <script>
         function upid() {
             document.getElementById("up-id").innerHTML = "영문 소문자,숫자 8~20자"
@@ -251,18 +239,13 @@
                 }
             })
         }
-
-
-        function saveform(){
-            $("#saveform").submit()
-        }
     </script>
 
 </head>
-<div class="mt-4">
-
-<div class="container">
-    <form id="saveform" action="/member/save" method="post" enctype="multipart/form-data">
+<body>
+<div class="container mt-3" style="padding: 30px;width: 400px;background-color: rgba(224,224,224,0.2);" >
+    <h2 class="gray" style="text-align: right"><i class="bi bi-gem"></i>&nbsp;&nbsp;Join us</h2>
+    <form action="/member/save" method="post" enctype="multipart/form-data">
         <div class="item row g-1">
             <input  class="form-control" type="text" id="mid" name="mid" placeholder="아이디 입력" autofocus onclick="upid()" onkeyup="" onblur="idc()"><br>
             <p class="uptext" id="up-id"></p>
@@ -279,15 +262,14 @@
         <div class="item row g-1">
             <p class="uptext1">프로필 사진을 등록해주세요.(선택사항)</p>
             <input class="form-control" type="file" name="mf">
-        </div><br>
+        </div><br><br>
         <div>
+            <input class="btn btn-outline-secondary input-group" id="sub" type="submit" value="가입하기" disabled="disabled">
         </div>
     </form>
+    <button class="btn btn-secondary input-group" onclick="re()">취소</button>
 </div>
-</div>
-    <div class="modal-footer">
-    <button class="btn btn-secondary" onclick="re()">취소</button>
-        <button class="btn btn-outline-secondary " id="sub" type="submit" onclick="saveform()" disabled="disabled">가입하기</button>
-    </div>
+
+
 </body>
 </html>

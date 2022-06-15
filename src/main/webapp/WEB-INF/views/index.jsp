@@ -12,13 +12,15 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <script src="\resources\js\jquery.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
     <title>Title</title>
 
 
     <script>
         function login(){
-            let mid=document.getElementById("mid").value;
-            let mpw=document.getElementById("mpw").value;
+            let mid=document.getElementById("mmid").value;
+            let mpw=document.getElementById("mmpw").value;
             let uplogin=document.getElementById("uplogin")
             $.ajax({
                 url:"/member/login",
@@ -32,34 +34,107 @@
                 error(e){
                     console.log("ajax error")
                     uplogin.innerHTML="아이디 또는 비밀번호를 확인해주세요."
-                    uplogin.style.color="red"
-                    uplogin.style.fontSize="15px"
+                    uplogin.style.color="gray"
+                    uplogin.style.fontSize="11px"
 
                 }
             })
         }
-    </script>
+        function resetupid(){
+            document.getElementById("uplogin").innerHTML=" ";
+        }
 
+        function login1(){
+            $("#mbtn").click()
+        }
+        function ff(){
+            location.href="/";
+        }
+    </script>
+<style>
+    .fbox{
+        /*border:darkgray solid 1px;*/
+        /*background-color:#C8EEF3;*/
+        border-radius: 0;
+        border-top: 0;
+        border-bottom: 0;
+        /*width:400px;*/
+        height: 230px;
+        padding:30px 30px 10px 30px ;
+        text-align: center;"
+    }
+    .nor{
+        border-radius:0;
+    }
+
+    .form-control:focus {
+        border-color: #8c8f91;
+        box-shadow: 0 0 0 0.2rem rgba(74, 74, 75, 0.25);
+    }
+
+</style>
 
 </head>
 <body>
-<div class="container" style="background-color:rgb(224,224,224);width:400px; height: 250px; padding: 30px; text-align: center; margin-top: 200px">
-    <form>
+<div style="width: 450px" class="container">
+<div class="container form-control" style="background-color:#C8EEF3;color:gray ;border-bottom-left-radius: 0;border-bottom-right-radius: 0; height: 62px; text-align: center; margin-top: 200px">
+<%--    <div class="" style="color: gray;margin-bottom: 30px">--%>
+        <span style="font-size: 30px">Havana</span> <span style="">&nbsp;ver1.0</span>
+<%--    </div>--%>
+</div>
+    <div class="container fbox form-control" >
 
-        <div class="input-group container mt-3">
-        <i class="bi bi-person-fill input-group-text" ></i>
-        <input type="text" class="form-control input-group" id="mid" name="mid" placeholder="ID"><br>
+    <form>
+        <div class="input-group input-group-lg container mt-3">
+        <sapn class=" input-group-text"><i class="bi bi-person-fill" ></i></sapn>
+        <input type="text" class="form-control " id="mmid" name="mid" placeholder="ID" autofocus>
         </div>
-        <div class="input-group  container mt-3">
-        <i class="bi bi-key input-group-text"></i>
-        <input class="form-control input-group" type="text" id="mpw" name="mpw" placeholder="Password"><br>
+        <div class="input-group input-group-lg container " style="margin-top: 35px">
+        <i class="bi bi-key input-group-text "></i>
+        <input class="form-control " type="text" id="mmpw" name="mpw" placeholder="Password" >
         </div>
-        <div id="uplogin" style="margin-bottom: 0">&nbsp;</div>
+        <div id="uplogin" style="margin-top: 5px">&nbsp;</div>
     </form>
-    <div style="margin: 0">
-    <button class="btn btn-secondary" onclick="login()">LOG_IN</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button class="btn btn-secondary" onclick="location.href='/member/save'">JOIN_US</button>
+
     </div>
+        <div class="container form-control" style=" border-top-left-radius: 0;border-top-right-radius: 0; height: 80px; text-align: center;">
+<div class="mt-3" >
+        <button class="btn btn-outline-info" style="margin-right: 10px;border-color:#d7dbdb ;color: #5c636a" onclick="modal()"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">JoinUs</button>
+    <button class="btn btn-outline-info" style="margin-left:10px; border-color:#d7dbdb ;color: #5c636a " onclick="login()" onblur="resetupid()">Login</button>
+    </div></div>
+</div>
+
+<script>
+function modal(){
+    $(".modal-body").load("/member/joinModal");}
+</script>
+
+<!-- Button trigger modal -->
+<button id="mbtn" type="button" class="btn btn-primary" onclick="modal()"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" hidden>
+    Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" style="margin-top: 50px" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 400px;">
+        <div class="modal-content" >
+            <div class="modal-header" style="background-color: #f7d8d2">
+                <h5 class="modal-title" id="staticBackdropLabel">Join MEMBERS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="ff()"></button>
+            </div>
+            <div class="modal-body" >
+                ...
+<%--            </div>--%>
+<%--            <div class="modal-footer">--%>
+<%--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="ff()">Close</button>--%>
+<%--                <button type="button" class="btn btn-primary" onclick="msave()">Understood</button>--%>
+<%--            </div>--%>
+        </div>
+    </div>
+</div>
+
+
+
 </div>
 </body>
 </html>

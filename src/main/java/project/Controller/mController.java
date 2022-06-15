@@ -63,5 +63,9 @@ public class mController  {
         session.invalidate();
         return "index";
     }
+    @GetMapping("joinModal")
+    String joinmodal(){
+        return "/member/save-form1" ;
+    }
 
 }

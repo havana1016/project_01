@@ -17,6 +17,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <title>Title</title>
     <style>
+
+
+
         .box{
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
@@ -25,46 +28,14 @@
             border:gray solid 1px;
             height: 1000px;
         }
-        .arrow_box {
-            position: relative;
-            background: #88b7d5;
-            border: 4px solid #c2e1f5;
-        }
-        .arrow_box:after, .arrow_box:before {
-            bottom: 100%;
-            left: 50%;
-            border: solid transparent;
-            content: "";
-            height: 0;
-            width: 0;
-            position: absolute;
-            pointer-events: none;
-        }
 
-        .arrow_box:after {
-            border-color: rgba(136, 183, 213, 0);
-            border-bottom-color: #88b7d5;
-            border-width: 30px;
-            margin-left: -30px;
-        }
-        .arrow_box:before {
-            border-color: rgba(194, 225, 245, 0);
-            border-bottom-color: #c2e1f5;
-            border-width: 36px;
-            margin-left: -36px;
-        }
 
 
 
     </style>
     <script>
 
-        // <!-- 채팅 스크롤 하단으로 보내기 -->
-        // $('#msgbody').scrollTop($('#msgbody')[0].scrollHeight);
 
-
-
-        출처: https://mjmjmj98.tistory.com/40 [Live passionate😎:티스토리]
 
 
         function enter() {
@@ -229,16 +200,18 @@
                 dataType:'json',
                 success:function (e){
                     console.log("flist suc")
-                    let html='<table class="table table-hover">'
+                    console.log(e.length)
+                    if(e.length!=0){
+                    let html='<table class="table table-hover table-borderless">'
                     for(let i in e){
                              let count = msgcount('${sessionScope.logmem.mid}',e[i].fid);
 
                               if(count>0){
-                        html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 id="msgcount11"><span class="badge bg-secondary mt-2">New '+count+'</span></h4><h2 class="">'+e[i].fid+'</h2></td>';}
+                        html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><tdstyle="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 id="msgcount11"><span class="badge bg-secondary mt-2">New '+count+'</span></h4><h4 class="">'+e[i].fid+'</h4></td>';}
                               else{
-                                  html+='<tr id="btndb" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 style="margin-top: 30px">'+e[i].fid+'</h2></td>';}
+                                  html+='<tr id="btndb" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 style="margin-top: 30px;color: gray">'+e[i].fid+'</h4></td>';}
                         //
-                        html+='<td style="text-align: center"><button id="btbt" class="btn btn-outline-secondary mt-4" >버튼버튼</button></td><td><td></tr>'
+                        html+='<td style="text-align: center"><button id="btbt" class="btn btn-outline-secondary mt-4" >버튼버튼</button></td></tr>'
                     }
                         // html+='<tr onclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "data-bs-toggle="modal" data-bs-target="#hssModal"><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
 
@@ -246,6 +219,42 @@
                     html+='</table>'
                     flistz.innerHTML=html;
 
+                    // function timer(){
+                    //     flist()
+                    // }
+                    //
+                    // let timerVar1 =setTimeout( timer, 2000);
+                    // // clearTimeout(timerVar1);
+                    // $("#btndb,#btndb1").dblclick(function (){
+                    //
+                    //     clearTimeout(timerVar1);
+                    // })
+                    //
+                    //
+                    // function msgcount(mset,mget){
+                    //     let result=""
+                    //     $.ajax({
+                    //         url:"/msg/count",
+                    //         type:"get",
+                    //         data:{"mset":mset,"mget":mget},
+                    //         dataType:"text",
+                    //         async: false,
+                    //         success:function (e){
+                    //             console.log("msgcount suc : "+e)
+                    //             result=e;
+                    //
+                    //         },
+                    //         error:function (e){
+                    //             console.log("msgcount err")
+                    //         }
+                    //     });
+                    //
+                    //     return result;}
+
+
+                }else{
+                        flistz.innerHTML='<h1>아직친구가 없어요.</h1>'
+                    }
                     function timer(){
                         flist()
                     }
@@ -277,6 +286,7 @@
                         });
 
                         return result;
+
                     }
 
 
@@ -495,36 +505,59 @@
     </script>
 </head>
 <body onload="flist()">
-<div style="width: 550px;padding: 30px" >
-   <div class="row justify-content-between">
-    <div class="mb-4 col-4">
-    <button class="btn btn-secondary" onclick="location.href='/pfr/myfr'" >친구관리</button>
-    </div>
-    <div  class="mb-4 col-2">
-        <button class="btn btn-secondary" onclick="logout()">logout</button>
-    </div>
-   </div>
+<div class="form-control container" style="background-color: #C8EEF3;padding: 25px 30px 0 30px;width: 450px;margin-top:20px;border-bottom-right-radius: 0;border-bottom-left-radius: 0 " >
     <div class="row justify-content-between">
-        <div class="col-2">
-<%--            style="background-color:white; border-radius: 3px; padding-left: 10px;padding-top: 5px">--%>
-            <p style="text-align: center"  id="countzone"></p></div>
-    <div class="col-4">
+        <div class="col-3 mb-2">
+            <p style="text-align: center;"  id="countzone">
+
+            </p></div>
+    <div class="col-6 " style="margin-bottom: 20px">
         <div class="input-group" >
             <input  id="search" class="form-control"
                     placeholder="Find ID" onkeyup="enter()">
-            <button class="input-group-text btn btn-outline-secondary" id="modalbtn" onclick="pfrc()" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search"></i></button>
+            <button class="input-group-text btn btn-secondary" id="modalbtn" onclick="pfrc()" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search"></i></button>
     </div>
     </div>
         </div>
-    <table class="table ">
-        <tr>
-            <th style="font-size: 50px"><p class="mt-4" style="margin-bottom: 0;text-align: right">${sessionScope.logmem.mid}</p></th>
+</div>
+
+<div class="collapse" id="collapseExample" style="">
+    <div class="form-control container" style="border-radius:0;width: 450px;border-top: 0" >
+        <%--        <div class="card card-body" >--%>
+        <div class="btn-group container" style="margin-top: 20px; margin-bottom: 20px;" >
+            <button class="btn  btn-outline-secondary" onclick="location.href='/pfr/myfr'">친구관리</button>
+            <button class="btn  btn-outline-secondary" onclick="logout()">로그아웃</button>
+        </div>
+        <%--       </div>--%>
+    </div>
+</div>
+
+
+<div class="form-control container" style="border-radius:0;width: 450px;border-top: 0;border-bottom: 0;background-color: rgba(200, 238, 243,0.3)" >
+
+    <table class="table table-borderless" style="margin-top:16px;">
+        <tr data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <th style="font-size: 30px"><p class="mt-5" style="margin-bottom: 0;text-align: right">${sessionScope.logmem.mid}</p></th>
             <td style="width:100px; height:100px"><img src="${pageContext.request.contextPath}/upload/${sessionScope.logmem.mfname}"
                                                             alt="" width="100px" height="100px" class="dot" style="border-radius: 30%"></td>
         </tr>
-    </table>
-    <div class="mt-2">
-        <div id="table" class="htable" style="height: 600px; overflow: auto">
+    </table></div>
+
+<%--    <div class="collapse" id="collapseExample" style="">--%>
+<%--    <div class="form-control container" style="border-radius:0;width: 450px;border-bottom: 0" >--%>
+<%--&lt;%&ndash;        <div class="card card-body" >&ndash;%&gt;--%>
+<%--            <div class="btn-group container" style="margin-top: 20px; margin-bottom: 20px;" >--%>
+<%--            <button class="btn  btn-outline-secondary" onclick="location.href='/pfr/myfr'">친구관리</button>--%>
+<%--            <button class="btn  btn-outline-secondary" onclick="logout()">로그아웃</button>--%>
+<%--        </div>--%>
+<%--&lt;%&ndash;       </div>&ndash;%&gt;--%>
+<%--    </div>--%>
+<%--</div>--%>
+<div class="form-control container" style="background-color: #C8EEF3;width: 450px;border-top-right-radius: 0;border-top-left-radius: 0;padding: 15px 10px 15px 10px" >
+
+<%--    <div class="mt-2">--%>
+        <div id="table" class="" style="border-radius: 2%;background-color: rgba(253,253,253,0.5);height: 510px;overflow:auto;">
+<%--        <div id="table" class="htable" style="height:auto; overflow: auto">--%>
 
 
         </div>
