@@ -5,8 +5,13 @@
 
 <mapper namespace="msg">
 <insert id="save">
-    insert into msgtable (mset,mget,msg,mtime) values (#{mset},#{mget},#{msg},now())
+    insert into msgtable (mset,mget,msg,mtime,sfname,gfname)
+    values (#{mset},#{mget},#{msg},now(),#{sfname},#{gfname})
 </insert>
+<!--    <insert id="save">-->
+<!--        insert into msgtable (mset,mget,msg,mtime)-->
+<!--        values (#{mset},#{mget},#{msg},now())-->
+<!--    </insert>-->
 <select id="findmsg" resultType="msg">
     select * from msgtable where mset=#{mset} and mget=#{mget} or mset=#{mget} and mget=#{mset}
 </select>
@@ -15,6 +20,21 @@
     </update>
     <select id="count" resultType="int">
         select count(seeint) from msgtable where mset=#{mget} and mget=#{mset} and seeint=1
+    </select>
+    <select id="mcount" resultType="int">
+        select sum(seeint) from msgtable where mget=#{mget}
+    </select>
+    <select id="mcount1" resultType="int">
+        select sum(seeint) from msgtable where mget=#{mget} or mset=#{mget}
+    </select>
+    <select id="mtime" resultType="String">
+        select  max(mtime) from msgtable where mset=#{mset} and mget=#{mget} or mget=#{mset} and mset=#{mget}
+    </select>
+    <select id="findclist" resultType="msg">
+        select * from msgtable where mget=#{mget}
+    </select>
+    <select id="findclist1" resultType="msg">
+        select mget,mset,gfname,sfname,msg,max(mtime) from msgtable where mget=#{mget} group by mset;
     </select>
 </mapper>
 

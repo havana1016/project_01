@@ -9,4 +9,6 @@ public class msgDto {
     String msg;
     String mtime;
     int seeint;
+    String sfname;
+    String gfname;
 }

@@ -8,8 +8,11 @@
     insert into ftable (mid,fid,ffname) values (#{mid},#{fid},#{ffname})
 </insert>
     <select id="findall" resultType="fdto">
-        select * from ftable where mid=#{mid}
+        select * from ftable where mid=#{mid} order by mtime desc
     </select>
+    <update id="mtime">
+        update ftable set mtime=#{mtime} where mid=#{mset} and fid=#{mget} or mid=#{mget} and fid=#{mset}
+    </update>
 
 </mapper>
 

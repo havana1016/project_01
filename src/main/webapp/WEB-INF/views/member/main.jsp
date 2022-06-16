@@ -38,105 +38,105 @@
 
 
 
-        function enter() {
-            if (window.event.keyCode == 13) {
-                document.getElementById("modalbtn").click();
-            }
-        }
-        function pfr(){
-            let yid=document.getElementById("search").value;
-            let pid='${sessionScope.logmem.mid}';
-            let zone=document.getElementById("resultzone")
-            $.ajax({
-                url:"/pfr/save",
-                type:"get",
-                data:{"pid":pid,"yid":yid},
-                dataType: "text",
-                success:function (e){
-                    console.log("pfr success")
-                    zone.innerHTML="친구 신청이 완료 되었습니다."
+        <%--function enter() {--%>
+        <%--    if (window.event.keyCode == 13) {--%>
+        <%--        document.getElementById("modalbtn").click();--%>
+        <%--    }--%>
+        <%--}--%>
+        <%--function pfr(){--%>
+        <%--    let yid=document.getElementById("search").value;--%>
+        <%--    let pid='${sessionScope.logmem.mid}';--%>
+        <%--    let zone=document.getElementById("resultzone")--%>
+        <%--    $.ajax({--%>
+        <%--        url:"/pfr/save",--%>
+        <%--        type:"get",--%>
+        <%--        data:{"pid":pid,"yid":yid},--%>
+        <%--        dataType: "text",--%>
+        <%--        success:function (e){--%>
+        <%--            console.log("pfr success")--%>
+        <%--            zone.innerHTML="친구 신청이 완료 되었습니다."--%>
 
 
-                },
-                error:function (e){
-                    console.log("pfr error")
-                }
-            })
-        }
-        function search(){
-            let mid=document.getElementById("search").value;
-            let result=document.getElementById("result")
-            let zone=document.getElementById("resultzone")
-            zone.innerHTML=" "
+        <%--        },--%>
+        <%--        error:function (e){--%>
+        <%--            console.log("pfr error")--%>
+        <%--        }--%>
+        <%--    })--%>
+        <%--}--%>
+        <%--function search(){--%>
+        <%--    let mid=document.getElementById("search").value;--%>
+        <%--    let result=document.getElementById("result")--%>
+        <%--    let zone=document.getElementById("resultzone")--%>
+        <%--    zone.innerHTML=" "--%>
 
-            $.ajax({
-                url:"/member/search",
-                type:"get",
-                data:{"mid":mid},
-                dataType:"json",
-                success:function (e){
-                    console.log("search success")
-                    console.log(e)
-                    let bf=e.mfname;
+        <%--    $.ajax({--%>
+        <%--        url:"/member/search",--%>
+        <%--        type:"get",--%>
+        <%--        data:{"mid":mid},--%>
+        <%--        dataType:"json",--%>
+        <%--        success:function (e){--%>
+        <%--            console.log("search success")--%>
+        <%--            console.log(e)--%>
+        <%--            let bf=e.mfname;--%>
 
-                    console.log("bf: "+bf)
-                    let html='<table class="container" style="margin-left: 10px"><tr><td><img src="/upload/'+bf+'" width="100px" height="100px" style="border-radius: 30%" class=""></td>';
-                    html+="<th style='text-align: center'><h1 class='mt-5'>"+e.mid
-                    html+="</h1></th><td><button id='pbtn' class='mt-5 btn btn-secondary' onclick='reset(),pfr()'>친구신청</button></td></tr></table>"
-                    result.innerHTML=html;
-
-
-                },
-                error:function (e){
-                    console.log("search error");
-                    result.innerHTML="<br>친구 아이디를 확인해주세요.<br><br>";
-
-                }
-            })
-        }
-        function logout(){
-            location.href="/member/logout";
-        }
+        <%--            console.log("bf: "+bf)--%>
+        <%--            let html='<table class="container" style="margin-left: 10px"><tr><td><img src="/upload/'+bf+'" width="100px" height="100px" style="border-radius: 30%" class=""></td>';--%>
+        <%--            html+="<th style='text-align: center'><h1 class='mt-5'>"+e.mid--%>
+        <%--            html+="</h1></th><td><button id='pbtn' class='mt-5 btn btn-secondary' onclick='reset(),pfr()'>친구신청</button></td></tr></table>"--%>
+        <%--            result.innerHTML=html;--%>
 
 
-        function reset(){
-           let pbtn=document.getElementById("pbtn")
-           pbtn.setAttribute("disabled","disabled");
+        <%--        },--%>
+        <%--        error:function (e){--%>
+        <%--            console.log("search error");--%>
+        <%--            result.innerHTML="<br>친구 아이디를 확인해주세요.<br><br>";--%>
 
-        }
-        function pfrc(){
-            let mid=document.getElementById("search").value;
-            let pid='${sessionScope.logmem.mid}'
-            let pbtn=document.getElementById("pbtn")
-            let zone=document.getElementById("resultzone")
-            zone.innerHTML=" "
+        <%--        }--%>
+        <%--    })--%>
+        <%--}--%>
+        <%--function logout(){--%>
+        <%--    location.href="/member/logout";--%>
+        <%--}--%>
 
-            $.ajax({
-                url:"/pfr/pfrc",
-                type:"get",
-                data:{"yid":mid,"pid":pid},
-                dataType:"json",
-                success:function (e){
-                    console.log("pfrc success : "+e);
 
-                        if(e.fbool==1){
-                        document.getElementById("result").innerHTML="<br>"+mid+"님과 이미 친구사이 입니다."+"<br><br>"
-                       // alert("이미 친구사이 입니다.");
-                    }else if(e.fbool==0){
-                        // alert("이미 친구 신청을 하였습니다.");
-                        document.getElementById("result").innerHTML="<br>"+mid+" 님과의 친구 신청이 존재합니다."+"<br><br>"
-                    }
-                },
-                error:function (e){
-                    console.log("pfrc error : ")
-                    if(pid!=mid){
-                    search();}else {
-                        document.getElementById("result").innerHTML="<br>"+"친구의 아이디를 입력하세요."+"<br><br>"
+        <%--function reset(){--%>
+        <%--   let pbtn=document.getElementById("pbtn")--%>
+        <%--   pbtn.setAttribute("disabled","disabled");--%>
 
-                    }
-                }
-            })
-        }
+        <%--}--%>
+        <%--function pfrc(){--%>
+        <%--    let mid=document.getElementById("search").value;--%>
+        <%--    let pid='${sessionScope.logmem.mid}'--%>
+        <%--    let pbtn=document.getElementById("pbtn")--%>
+        <%--    let zone=document.getElementById("resultzone")--%>
+        <%--    zone.innerHTML=" "--%>
+
+        <%--    $.ajax({--%>
+        <%--        url:"/pfr/pfrc",--%>
+        <%--        type:"get",--%>
+        <%--        data:{"yid":mid,"pid":pid},--%>
+        <%--        dataType:"json",--%>
+        <%--        success:function (e){--%>
+        <%--            console.log("pfrc success : "+e);--%>
+
+        <%--                if(e.fbool==1){--%>
+        <%--                document.getElementById("result").innerHTML="<br>"+mid+"님과 이미 친구사이 입니다."+"<br><br>"--%>
+        <%--               // alert("이미 친구사이 입니다.");--%>
+        <%--            }else if(e.fbool==0){--%>
+        <%--                // alert("이미 친구 신청을 하였습니다.");--%>
+        <%--                document.getElementById("result").innerHTML="<br>"+mid+" 님과의 친구 신청이 존재합니다."+"<br><br>"--%>
+        <%--            }--%>
+        <%--        },--%>
+        <%--        error:function (e){--%>
+        <%--            console.log("pfrc error : ")--%>
+        <%--            if(pid!=mid){--%>
+        <%--            search();}else {--%>
+        <%--                document.getElementById("result").innerHTML="<br>"+"친구의 아이디를 입력하세요."+"<br><br>"--%>
+
+        <%--            }--%>
+        <%--        }--%>
+        <%--    })--%>
+        <%--}--%>
 
         function pcount(){
             let czone=document.getElementById("countzone")
@@ -165,6 +165,7 @@
         }
             function mbtn(fid,ffname){
                 document.getElementById("mbtn11").click()
+                // mcount("msglist",fid)
                 let zone=document.getElementById("exampleModalLabel")
                 let footer=document.getElementById("footer")
                 let html='<table><tr><td>'
@@ -174,19 +175,13 @@
                 zone.innerHTML=html;
                 let html2='<textarea class="form-control mb-2" id="msg" cols="20" wrap="hard"></textarea>'
                 html2+='<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closemodal" >Close</button>'
-                html2+='<button type="button" class="btn btn-primary" id="sendbtn" onclick="savemsg('+"'"+fid+"'"+')">Send</button>'
+                // html2+='<button type="button" class="btn btn-primary" id="sendbtn" onclick="savemsg('+"'"+fid+"'"+')">Send</button>'
+                html2+='<button type="button" class="btn btn-primary" id="sendbtn" onclick="savemsg('+"'"+fid+"'"+",'"+ffname+"'"+')">Send</button>'
                 // html2+='<button type="button" class="btn btn-primary" id="sendbtn" onclick="savemsg('+"'"+fid+"','"+msg+"'"+')">Send</button>'
                 footer.innerHTML=html2;
 
 
                 findmsg(fid)
-
-
-                // document.getElementById("mbtn11").click()
-
-
-
-
 
 
             }
@@ -202,70 +197,27 @@
                     console.log("flist suc")
                     console.log(e.length)
                     if(e.length!=0){
-                    let html='<table class="table table-hover table-borderless">'
+                    let html='<table class="table table-hover table-bordered">'
                     for(let i in e){
                              let count = msgcount('${sessionScope.logmem.mid}',e[i].fid);
 
                               if(count>0){
-                        html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><tdstyle="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 id="msgcount11"><span class="badge bg-secondary mt-2">New '+count+'</span></h4><h4 class="">'+e[i].fid+'</h4></td>';}
+                        html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 id="msgcount11" style="margin: 0"><span class="badge bg-secondary">New '+count+'</span></h4><h4 style="padding: 0;margin: 0">'+e[i].fid+'</h4></td>';}
                               else{
-                                  html+='<tr id="btndb" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 style="margin-top: 30px;color: gray">'+e[i].fid+'</h4></td>';}
-                        //
-                        html+='<td style="text-align: center"><button id="btbt" class="btn btn-outline-secondary mt-4" >버튼버튼</button></td></tr>'
+                                  html+='<tr id="btndb" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 style="margin-top: 15px;color: gray;padding: 0">'+e[i].fid+'</h4></td>';}
+
+                        html+='</tr>'
                     }
-                        // html+='<tr onclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "data-bs-toggle="modal" data-bs-target="#hssModal"><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].fid+'</h2></td>';
 
 
                     html+='</table>'
                     flistz.innerHTML=html;
 
-                    // function timer(){
-                    //     flist()
-                    // }
-                    //
-                    // let timerVar1 =setTimeout( timer, 2000);
-                    // // clearTimeout(timerVar1);
-                    // $("#btndb,#btndb1").dblclick(function (){
-                    //
-                    //     clearTimeout(timerVar1);
-                    // })
-                    //
-                    //
-                    // function msgcount(mset,mget){
-                    //     let result=""
-                    //     $.ajax({
-                    //         url:"/msg/count",
-                    //         type:"get",
-                    //         data:{"mset":mset,"mget":mget},
-                    //         dataType:"text",
-                    //         async: false,
-                    //         success:function (e){
-                    //             console.log("msgcount suc : "+e)
-                    //             result=e;
-                    //
-                    //         },
-                    //         error:function (e){
-                    //             console.log("msgcount err")
-                    //         }
-                    //     });
-                    //
-                    //     return result;}
 
 
                 }else{
                         flistz.innerHTML='<h1>아직친구가 없어요.</h1>'
                     }
-                    function timer(){
-                        flist()
-                    }
-
-                    let timerVar1 =setTimeout( timer, 2000);
-                    // clearTimeout(timerVar1);
-                    $("#btndb,#btndb1").dblclick(function (){
-
-                        clearTimeout(timerVar1);
-                    })
-
 
                     function msgcount(mset,mget){
                         let result=""
@@ -298,106 +250,72 @@
 
                 }
             });
+            mcount("flist")
 
+        }
 
+            let count=0
+        function mcount(type,fid){
+            let mid='${sessionScope.logmem.mid}'
+            $.ajax({
+                url:"/msg/mcount",
+                type:"get",
+                data:{"mget":mid,"type":type},
+                dataType:"text",
+                success:function (e){
+                    console.log("mcount suc e: "+e)
+                    console.log("mcount suc count: "+count)
+                    console.log("mcount suc type: "+type)
+
+                    if(e!=count){
+                        if(type=="flist"){
+                            pcount()
+                        flist()
+                        }
+                        else if(type=="msglist"){
+                            findmsg(fid)
+                        }
+                        count=e;
+
+                    }else {
+                        if(type=="flist"){
+                            pcount()
+                        }
+                    }
+                },
+                error:function (){
+                    console.log("mcount err")
+                }
+            })
+
+            function timer(){
+                mcount(type,fid)
+            }
+
+            // let timerVar1 =setTimeout( timer, 1000);
+            let timerVar1;
+            if (type=="flist"){
+                console.log("set:2000")
+                timerVar1 =setTimeout( timer, 2000)
+            }else if(type=="msglist"){
+                console.log("set:1000")
+                timerVar1 =setTimeout( timer, 1000)
+            }
+
+            $("#btndb,#btndb1").dblclick(function (){
+                clearTimeout(timerVar1);
+            })
+            $("#closemodal,#xbtn,#sendbtn").click(function (){
+                clearTimeout(timerVar1);
+
+            })
         }
 
 
 
             function test() {
             document.getElementById("msgbody").scrollTop = document.getElementById("msgbody").scrollHeight;
-            //     let myDiv = document.getElementById("msgbody");
-            //     myDiv.scrollTop = myDiv.scrollHeight;
-
-        }
-        // function msgcount(mset,mget){
-        //     let zone=document.getElementById("countzone")
-        //     $.ajax({
-        //         url:"/msg/count",
-        //         type:"get",
-        //         data:{"mset":mset,"mget":mget},
-        //         dataType:"text",
-        //         success:function (e){
-        //             console.log("msgcount suc : "+e)
-        //             if(e>0){
-        //                 zone.innerHTML='<span class="badge bg-secondary mt-2 ">New</span> &nbsp'+e;
-        //             }
-        //
-        //         },
-        //         error:function (e){
-        //             console.log("msgcount err")
-        //
-        //         }
-        //     })
-        // }
-
-
-
-        <%--function findmsg3(fid){--%>
-
-        <%--    let body=document.getElementById("msgbody")--%>
-        <%--    let zone=document.getElementById("exampleModalLabel")--%>
-
-        <%--    $.ajax({--%>
-        <%--        url:"/msg/findmsg",--%>
-        <%--        type:"get",--%>
-        <%--        data:{"mset":'${sessionScope.logmem.mid}',"mget":fid},--%>
-        <%--        dataType:"json",--%>
-        <%--        success:function (e){--%>
-        <%--            console.log("findmsg suc")--%>
-        <%--            let html='<table class="table">'--%>
-        <%--            for(let i in e){--%>
-        <%--                html+='<tr><td>'--%>
-        <%--                html+="'"+e[i].mset+"'"--%>
-        <%--                html+='</td><td>'--%>
-        <%--                html+="'"+e[i].mtime+"'"--%>
-        <%--                if(e[i].mset=='${sessionScope.logmem.mid}'){--%>
-        <%--                html+='</td></tr><tr style="text-align: right;">'--%>
-        <%--                    html+='<td ><div style="padding:10px; background-color:#77FF0F; border-radius: 5px">'--%>
-        <%--                    html+=e[i].msg+'</div></td></tr>'--%>
-
-        <%--                }--%>
-        <%--                else{--%>
-        <%--                    html+='</td></tr><tr style="text-align: left">'--%>
-        <%--                    html+='<td ><div id="text" style="padding:10px; background-color:#E7E8EB; border-radius: 5px">'--%>
-        <%--                    html+=e[i].msg+'</div></td></tr>'--%>
-        <%--                    // html+=e[i].msg+e[i].setint--%>
-        <%--                    // html+='</div></td></tr>'--%>
-        <%--                }--%>
-
-        <%--                // html+="'"+e[i].msg+"'"--%>
-        <%--                // html+='</div></td></tr>'--%>
-        <%--            }--%>
-
-        <%--            html+='</table>'--%>
-        <%--            body.innerHTML=html;--%>
-
-        <%--            setTimeout(function() {--%>
-        <%--                test();--%>
-        <%--            }, 150);--%>
-        <%--            function timer(){--%>
-        <%--                findmsg(fid)--%>
-        <%--            }--%>
-
-        <%--            let timerVar = setTimeout( timer, 1000);--%>
-        <%--            // setTimeout(function (){--%>
-        <%--            // findmsg(fid)},1000--%>
-        <%--            //--%>
-        <%--            // )--%>
-        <%--            $("#closemodal,#xbtn").click(function (){--%>
-        <%--                clearTimeout(timerVar);--%>
-        <%--            })--%>
-
-
-
-        <%--        },--%>
-        <%--        error:function (e){--%>
-        <%--            console.log("findmsg err")--%>
-
-        <%--        }--%>
-
-
-        <%--    })}--%>
+                    }
 
         function findmsg(fid){
 
@@ -420,7 +338,7 @@
                                 html+='<div class="col-1">'
                                     html+=e[i].seeint
                                 html+='</div>'
-                            html+='<div class="col-5" style="text-align: right">'
+                            html+='<div class="col-6" style="text-align: right">'
                                 html+=e[i].mtime
                                 html+='</div></div>';
                            }
@@ -440,27 +358,15 @@
                             html+=e[i].msg+'</div>'
                         }
 
-                        // html+="'"+e[i].msg+"'"
-                        // html+='</div></td></tr>'
+
                     }
 
 
                     body.innerHTML=html;
+                    setTimeout(test,150)
 
-                    setTimeout(function() {
-                        test();
-                    }, 150);
-                    function timer(){
-                        findmsg(fid)
-                    }
 
-                    let timerVar = setTimeout( timer, 1000);
-                    // setTimeout(function (){
-                    // findmsg(fid)},1000
-                    //
-                    // )
                     $("#closemodal,#xbtn").click(function (){
-                        clearTimeout(timerVar);
                         location.href="/member/main"
                     })
 
@@ -472,22 +378,25 @@
 
                 }
 
+            });
+        }
 
-            })}
 
 
 
-        function savemsg(fid){
+
+        function savemsg(fid,ffname){
             let msg=document.getElementById("msg");
 
             $.ajax({
                 url:"/msg/save",
-                data:{"mset":'${sessionScope.logmem.mid}',"mget":fid,"msg":msg.value},
+                data:{"mset":'${sessionScope.logmem.mid}',"mget":fid,"msg":msg.value,
+                   "sfname":'${sessionScope.logmem.mfname}',"gfname":ffname },
                 type:"get",
                 dataType:"text",
                 success:function (e){
                     console.log("savemsg suc")
-                    findmsg(fid)
+                    mcount("msglist",fid)
                     msg.value=null
                     msg.focus()
 
@@ -505,24 +414,31 @@
     </script>
 </head>
 <body onload="flist()">
-<div class="form-control container" style="background-color: #C8EEF3;padding: 25px 30px 0 30px;width: 450px;margin-top:20px;border-bottom-right-radius: 0;border-bottom-left-radius: 0 " >
-    <div class="row justify-content-between">
-        <div class="col-3 mb-2">
-            <p style="text-align: center;"  id="countzone">
+<jsp:include page="/resources/layout/header.jsp" ></jsp:include>
 
-            </p></div>
-    <div class="col-6 " style="margin-bottom: 20px">
-        <div class="input-group" >
-            <input  id="search" class="form-control"
-                    placeholder="Find ID" onkeyup="enter()">
-            <button class="input-group-text btn btn-secondary" id="modalbtn" onclick="pfrc()" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search"></i></button>
-    </div>
-    </div>
-        </div>
-</div>
+<%--<div class="form-control container" style="background-color: #C8EEF3;padding: 20px 25px 0 25px;width: 400px;margin-top:20px;border-bottom-right-radius: 0;border-bottom-left-radius: 0 " >--%>
+<%--    <div class="row justify-content-between">--%>
+<%--        <div class="col-4 ">--%>
+<%--            <div class="input-group">--%>
+<%--                <h1 style="margin-top:5px"><i id="men" class="bi bi-person-fill" onclick="icon('men')"></i></h1>--%>
+<%--                <h2 style="margin-left:15px; margin-top:5px"><i id="chat" class="bi bi-chat" onclick="icon('chat')"></i></h2>--%>
+<%--            </div>--%>
+<%--&lt;%&ndash;            <p style="text-align: center;"  id="countzone1">&ndash;%&gt;--%>
+<%--&lt;%&ndash;            </p>&ndash;%&gt;--%>
+<%--        </div>--%>
+
+<%--    <div class="col-6 " style="margin-bottom: 20px">--%>
+<%--        <div class="input-group" >--%>
+<%--            <input  id="search" class="form-control"--%>
+<%--                    placeholder="Find ID" onkeyup="enter()">--%>
+<%--            <button class="input-group-text btn btn-secondary" id="modalbtn" onclick="pfrc()" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search"></i></button>--%>
+<%--    </div>--%>
+<%--    </div>--%>
+<%--        </div>--%>
+<%--</div>--%>
 
 <div class="collapse" id="collapseExample" style="">
-    <div class="form-control container" style="border-radius:0;width: 450px;border-top: 0" >
+    <div class="form-control container" style="border-radius:0;width: 400px;border-top: 0" >
         <%--        <div class="card card-body" >--%>
         <div class="btn-group container" style="margin-top: 20px; margin-bottom: 20px;" >
             <button class="btn  btn-outline-secondary" onclick="location.href='/pfr/myfr'">친구관리</button>
@@ -533,10 +449,11 @@
 </div>
 
 
-<div class="form-control container" style="border-radius:0;width: 450px;border-top: 0;border-bottom: 0;background-color: rgba(200, 238, 243,0.3)" >
+<div class="form-control container" style="border-radius:0;width: 400px;border-top: 0;border-bottom: 0;background-color: rgba(200, 238, 243,0.3)" >
 
     <table class="table table-borderless" style="margin-top:16px;">
         <tr data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <td class="col-3"><p style="text-align: center" id="countzone" ></p></td>
             <th style="font-size: 30px"><p class="mt-5" style="margin-bottom: 0;text-align: right">${sessionScope.logmem.mid}</p></th>
             <td style="width:100px; height:100px"><img src="${pageContext.request.contextPath}/upload/${sessionScope.logmem.mfname}"
                                                             alt="" width="100px" height="100px" class="dot" style="border-radius: 30%"></td>
@@ -553,7 +470,7 @@
 <%--&lt;%&ndash;       </div>&ndash;%&gt;--%>
 <%--    </div>--%>
 <%--</div>--%>
-<div class="form-control container" style="background-color: #C8EEF3;width: 450px;border-top-right-radius: 0;border-top-left-radius: 0;padding: 15px 10px 15px 10px" >
+<div class="form-control container" style="background-color: #C8EEF3;width: 400px;border-top-right-radius: 0;border-top-left-radius: 0;padding: 15px 10px 15px 10px" >
 
 <%--    <div class="mt-2">--%>
         <div id="table" class="" style="border-radius: 2%;background-color: rgba(253,253,253,0.5);height: 510px;overflow:auto;">
@@ -599,7 +516,7 @@
 
 
 <!--  메시지 Modal -->
-<div style="width: 550px" class="modal fade hss" id="hssModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div style="width: 400px" class="modal fade hss" id="hssModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <%--    <div class="modal-dialog hss modal-dialog-scrollable" id="abc">--%>
     <div class="modal-dialog hss " id="abc">
         <div class="modal-content hss">
@@ -608,7 +525,7 @@
 <%--                Modal title--%>
                 <button type="button" id="xbtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body hss" id="msgbody" style="overflow: auto;height: 500px; ">
+            <div class="modal-body hss" id="msgbody" style="overflow: auto;height: 420px; ">
                 ...
             </div>
             <div class="modal-footer hss" id="footer">
