@@ -136,10 +136,7 @@
                 chat.className="bi bi-chat-fill"
             }
         }
-        function url(){
-            let url=window.location.pathname
 
-        }
 
 
 

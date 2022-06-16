@@ -15,6 +15,8 @@ public class msgRepository {
         int result=sql.insert("msg.save",mem);
         if(result>0){
             String date=sql.selectOne("msg.mtime",mem);
+            System.out.println("msgRepository.save");
+            System.out.println("date = " + date);
             mem.setMtime(date);
             sql.update("fr.mtime",mem);
         }
@@ -36,18 +38,17 @@ public class msgRepository {
 
     public int mcount(msgDto mem,String type) {
         int result=0;
-        System.out.println("msgRepository.mcount");
-        System.out.println("mem = " + mem + ", type = " + type);
+
         if(type.equals("flist")){
         result=sql.selectOne("msg.mcount",mem);}
         else if(type.equals("msglist")){
             result=sql.selectOne("msg.mcount1",mem);}
-        System.out.println(result);
+
         return result;
     }
 
-    public List<msgDto> findclist(msgDto mem) {
-        List<msgDto> result=sql.selectList("msg.findclist",mem);
+    public msgDto findclist(msgDto mem) {
+        msgDto result=sql.selectOne("msg.findclist",mem);
 
         return result;
     }

@@ -26,13 +26,29 @@
 
 
 </head>
-<body >
+<body onload="">
 <jsp:include page="/resources/layout/header.jsp" ></jsp:include>
 <div class="form-control container" style="border-top: 0;background-color: #C8EEF3;width: 400px;height: 710px;border-top-right-radius: 0;border-top-left-radius: 0;padding: 15px 10px 15px 10px" >
     <div style="background-color: rgba(253,253,253,0.5)">
     <table class="table table-hover table-bordered">
     <c:forEach var="result" items="${clist}">
+            <script>
+                function findclist(){
+                    $.ajax({
+                        url:"/msg/chatlist",
+                        type:"get",
+                        data:{"mget":'${sessionScope.logmem.mid}',"mset":${result.mset}},
+                        dataType:"json",
+                        success:function (e){
+                            console.log("findclist suc")
+                        },
+                        error:function (){
+                            console.log("findclist err")
 
+                        }
+                    })
+                }
+            </script>
         <tr style="padding-bottom: 0">
             <td class="col-1" style="text-align: center">
                 <img src="/upload/${result.sfname}" width="50px" height="50px" style="border-radius: 30%;" class="mt-1" >

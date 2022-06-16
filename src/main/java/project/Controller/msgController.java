@@ -22,8 +22,7 @@ public class msgController {
 
     @GetMapping("save")
     @ResponseBody String save(@ModelAttribute msgDto mem){
-        System.out.println("msgController.save");
-        System.out.println("mem = " + mem);
+
         if(msgs.save(mem)>0){
             return "ok";
         }return null;
@@ -36,12 +35,14 @@ public class msgController {
     @ResponseBody int mcount(@RequestParam("mget")String mget,@RequestParam("type")String type){
         msgDto mem = new msgDto();
         mem.setMget(mget);
-        System.out.println("mget = " + mget + ", type = " + type);
         return msgs.mcount(mem,type);
     }
+    @GetMapping("chatlist")
+    @ResponseBody msgDto chatlist(@ModelAttribute msgDto mem){
+        return msgs.findclist(mem);
+    }
     @GetMapping("chat")
-    String chat(@ModelAttribute msgDto mem, Model model){
-        model.addAttribute("clist",msgs.finfclist(mem));
+    String chat(){
         return "/msg/chat";
     }
 

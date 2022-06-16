@@ -10,10 +10,15 @@
     <select id="findall" resultType="fdto">
         select * from ftable where mid=#{mid} order by mtime desc
     </select>
+<!--    <select id="findall" resultType="fdto">-->
+<!--        select * from ftable where mid=#{mid}-->
+<!--    </select>-->
     <update id="mtime">
-        update ftable set mtime=#{mtime} where mid=#{mset} and fid=#{mget} or mid=#{mget} and fid=#{mset}
+        update ftable set mtime=#{mtime} where mid=#{mget} and fid=#{mset}
     </update>
-
+<!--    <update id="mtime">-->
+<!--        update ftable set mtime=#{mtime} where mid=#{mset} and fid=#{mget} or mid=#{mget} and fid=#{mset}-->
+<!--    </update>-->
 </mapper>
 
 

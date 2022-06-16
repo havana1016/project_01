@@ -12,9 +12,7 @@ public class mRepository {
     public mDto findid(mDto mem) {
         String mid=mem.getMid();
         mDto result=sql.selectOne("mem.findid",mid);
-        System.out.println("mRepository.findid");
-        System.out.println(result);
-        return result;
+               return result;
     }
 
     public int save(mDto mem) {

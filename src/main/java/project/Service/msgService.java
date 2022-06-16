@@ -31,7 +31,7 @@ public class msgService {
         return msgr.mcount(mem,type);
     }
 
-    public List<msgDto> finfclist(msgDto mem) {
+    public msgDto findclist(msgDto mem) {
         return msgr.findclist(mem);
     }
 }
