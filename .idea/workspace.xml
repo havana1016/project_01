@@ -9,21 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02c26ff4-74f6-4b22-82e5-20150f802932" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/main1.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Controller/msgController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Controller/msgController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/mRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/mRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/msgRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/msgRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/mService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/mService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/msgService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/msgService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/fMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/fMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/msgMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/msgMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/msg/chat.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/msg/chat.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/layout/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/layout/header.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="02c26ff4-74f6-4b22-82e5-20150f802932" name="Changes" comment="채팅창 메인화면 불러오기 로직 변경,&#10;메인화면에 친구에게 받은 최근메시지 띄워주고 메시지받은 시간에 따라 친구리스트 정렬 바꾸기 완성 ,새로운메시지가 오면 새로운 메시지 알려주고 최상단으로 리스트 순서 변경,읽지 않은 메시지 카운트해서 표시하기 완성" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -200,7 +186,7 @@
       <workItem from="1654758234941" duration="13572000" />
       <workItem from="1654817584813" duration="47834000" />
       <workItem from="1655103070282" duration="121693000" />
-      <workItem from="1655382119429" duration="11711000" />
+      <workItem from="1655382119429" duration="12121000" />
     </task>
     <task id="LOCAL-00001" summary="메신져 개인 프로젝트 시작">
       <created>1654567311453</created>
@@ -286,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655293840439</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="채팅창 메인화면 불러오기 로직 변경,&#10;메인화면에 친구에게 받은 최근메시지 띄워주고 메시지받은 시간에 따라 친구리스트 정렬 바꾸기 완성 ,새로운메시지가 오면 새로운 메시지 알려주고 최상단으로 리스트 순서 변경,읽지 않은 메시지 카운트해서 표시하기 완성">
+      <created>1655395413735</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1655395413735</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,6 +308,7 @@
     <MESSAGE value="상대방이 메시지를 아직 읽지 않았을때 1표시 읽으면 1이 사라짐(카톡처럼)&#10;안 읽은 메시지가 존재할때 알림 개발중" />
     <MESSAGE value="상대방이 나에게 메시지 보냈을때 메인 화면에서 확인하지 않은 메시지 갯수표시 읽으면 채팅장 내의 숫자 사라짐 ,&#10;채팅창 내에서의 경우의 수들 계속 수정중 &#10;기능 상 구현 완성되면 css다듬기." />
     <MESSAGE value="css수정중 나머지 기능들 디테일 하게 보수중" />
-    <option name="LAST_COMMIT_MESSAGE" value="css수정중 나머지 기능들 디테일 하게 보수중" />
+    <MESSAGE value="채팅창 메인화면 불러오기 로직 변경,&#10;메인화면에 친구에게 받은 최근메시지 띄워주고 메시지받은 시간에 따라 친구리스트 정렬 바꾸기 완성 ,새로운메시지가 오면 새로운 메시지 알려주고 최상단으로 리스트 순서 변경,읽지 않은 메시지 카운트해서 표시하기 완성" />
+    <option name="LAST_COMMIT_MESSAGE" value="채팅창 메인화면 불러오기 로직 변경,&#10;메인화면에 친구에게 받은 최근메시지 띄워주고 메시지받은 시간에 따라 친구리스트 정렬 바꾸기 완성 ,새로운메시지가 오면 새로운 메시지 알려주고 최상단으로 리스트 순서 변경,읽지 않은 메시지 카운트해서 표시하기 완성" />
   </component>
 </project>
