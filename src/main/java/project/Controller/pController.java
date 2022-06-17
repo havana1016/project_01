@@ -79,4 +79,11 @@ public class pController {
         return null;
 
     }
+
+    @GetMapping("myfr1")
+    String myfr1(){
+        return "/friend/myfr1";
+    }
+
+
 }

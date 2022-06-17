@@ -60,7 +60,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/work/java/source/java_git/Git_clone/project_01/src/main/webapp/WEB-INF/views/member",
+    "last_opened_file_path": "D:/development_HSS/source/spring_framework/project_01/src/main/webapp/WEB-INF/views/friend",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
     "spring.configuration.checksum": "aeac2c31e88463ef2e8a36fd6ec694d6"
   },
@@ -74,11 +74,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\WEB-INF\views\friend" />
       <recent name="C:\work\java\source\java_git\Git_clone\project_01\src\main\webapp\WEB-INF\views\member" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\WEB-INF\views\member" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\resources\css\img" />
       <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\resources\mapper" />
-      <recent name="D:\development_HSS\source\spring_framework\project_01\src\main\webapp\resources\css" />
     </key>
   </component>
   <component name="RunManager">
@@ -187,6 +187,7 @@
       <workItem from="1654817584813" duration="47834000" />
       <workItem from="1655103070282" duration="121693000" />
       <workItem from="1655382119429" duration="12121000" />
+      <workItem from="1655422715395" duration="37327000" />
     </task>
     <task id="LOCAL-00001" summary="메신져 개인 프로젝트 시작">
       <created>1654567311453</created>

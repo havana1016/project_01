@@ -60,7 +60,7 @@
         border-bottom: 0;
         /*width:400px;*/
         height: 230px;
-        padding:30px 30px 10px 30px ;
+        padding:20px 30px 0px 30px ;
         text-align: center;"
     }
     .nor{
@@ -71,36 +71,43 @@
         border-color: #8c8f91;
         box-shadow: 0 0 0 0.2rem rgba(74, 74, 75, 0.25);
     }
+    /*input:-webkit-autofill {*/
+    /*    -webkit-box-shadow: 0 0 0 1000px white inset;*/
+    /*    box-shadow: 0 0 0 1000px white inset;*/
+    /*    -webkit-text-fill-color:#5c636a;*/
+    /*}*/
+    input:-webkit-autofill { -webkit-box-shadow: 0 0 0 30px #fff inset ; -webkit-text-fill-color: #5c636a; }
+    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { transition: background-color 5000s ease-in-out 0s; }
 
 </style>
 
 </head>
 <body>
-<div style="width: 450px" class="container">
-<div class="container form-control" style="background-color:#C8EEF3;color:gray ;border-bottom-left-radius: 0;border-bottom-right-radius: 0; height: 62px; text-align: center; margin-top: 200px">
+<div style="width: 400px" class="container">
+<div class="container form-control" style="background-color:#E4E5E8;color:gray ;border-bottom-left-radius: 0;border-bottom-right-radius: 0; height: 62px; text-align: center; margin-top: 200px">
 <%--    <div class="" style="color: gray;margin-bottom: 30px">--%>
         <span style="font-size: 30px">Havana</span> <span style="">&nbsp;ver1.0</span>
 <%--    </div>--%>
 </div>
-    <div class="container fbox form-control" >
+    <div class="container fbox form-control" style="background-color:#FBFBFB;height: 200px" >
 
-    <form>
+    <form style="margin: 0">
         <div class="input-group input-group-lg container mt-3">
         <sapn class=" input-group-text"><i class="bi bi-person-fill" ></i></sapn>
-        <input type="text" class="form-control " id="mmid" name="mid" placeholder="ID" autofocus>
+        <input type="text" class="form-control " style="color: #5c636a;background-color: white" id="mmid" name="mid" placeholder="ID" autofocus>
         </div>
         <div class="input-group input-group-lg container " style="margin-top: 35px">
         <i class="bi bi-key input-group-text "></i>
-        <input class="form-control " type="text" id="mmpw" name="mpw" placeholder="Password" >
+        <input class="form-control " style="color: #5c636a" type="text" id="mmpw" name="mpw" placeholder="Password" >
         </div>
         <div id="uplogin" style="margin-top: 5px">&nbsp;</div>
     </form>
 
     </div>
-        <div class="container form-control" style=" border-top-left-radius: 0;border-top-right-radius: 0; height: 80px; text-align: center;">
+        <div class="container form-control" style="background-color:#E4E5E8; border-top-left-radius: 0;border-top-right-radius: 0; height: 80px; text-align: center;">
 <div class="mt-3" >
-        <button class="btn btn-outline-info" style="margin-right: 10px;border-color:#d7dbdb ;color: #5c636a" onclick="modal()"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">JoinUs</button>
-    <button class="btn btn-outline-info" style="margin-left:10px; border-color:#d7dbdb ;color: #5c636a " onclick="login()" onblur="resetupid()">Login</button>
+        <button class="btn btn-secondary" style="margin-right: 10px;border-color:#d7dbdb ;" onclick="modal()"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">JoinUs</button>
+    <button class="btn btn-secondary" style="margin-left:10px; border-color:#d7dbdb ;" onclick="login()" onblur="resetupid()">Login</button>
     </div></div>
 </div>
 
@@ -117,12 +124,12 @@ function modal(){
 <!-- Modal -->
 <div class="modal fade" style="margin-top: 50px" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" style="width: 400px;">
-        <div class="modal-content" >
-            <div class="modal-header" style="background-color: #f7d8d2">
+        <div class="modal-content" style="background-color:#E4E5E8" >
+            <div class="modal-header" >
                 <h5 class="modal-title" id="staticBackdropLabel">Join MEMBERS</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="ff()"></button>
             </div>
-            <div class="modal-body" >
+            <div class="modal-body" style="background-color: rgba(253,253,253,0.8)" >
                 ...
 <%--            </div>--%>
 <%--            <div class="modal-footer">--%>

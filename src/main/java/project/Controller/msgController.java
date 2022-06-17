@@ -16,8 +16,9 @@ public class msgController {
     msgService msgs;
     @GetMapping("findmsg")
     @ResponseBody List<msgDto> findmsg(@ModelAttribute msgDto mem){
+
         msgs.seeint(mem);
-        return msgs.findmsg(mem);
+       return msgs.findmsg(mem);
     }
 
     @GetMapping("save")
