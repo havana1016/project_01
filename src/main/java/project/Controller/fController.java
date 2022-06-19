@@ -3,10 +3,7 @@ package project.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import project.Dto.fDto;
 import project.Dto.msgDto;
 import project.Service.fService;
@@ -31,5 +28,9 @@ public class fController {
         model.addAttribute("mcount",msgs.mgscount(msg));
 
         return fs.findall(mem);
+    }
+    @GetMapping("logc")
+    @ResponseBody int logcount(@RequestParam("mid")String mid){
+        return fs.logcount(mid);
     }
 }

@@ -38,6 +38,15 @@
     </style>
     <script>
 
+        let msgdb;
+        let frdb;
+        let pfrdb;
+        function searchDB(){
+            $.ajax({
+                url:"/member/searchDB"
+            })
+
+        }
 
 
 
@@ -49,7 +58,7 @@
         function pfr(){
             let yid=document.getElementById("search").value;
             let pid='${sessionScope.logmem.mid}';
-            let zone=document.getElementById("resultzone")
+            let zone=document.getElementById("result")
             $.ajax({
                 url:"/pfr/save",
                 type:"get",
@@ -57,7 +66,7 @@
                 dataType: "text",
                 success:function (e){
                     console.log("pfr success")
-                    zone.innerHTML="친구 신청이 완료 되었습니다."
+                    zone.innerHTML="<br>친구 신청이 완료 되었습니다.<br><br>"
 
 
                 },
@@ -69,8 +78,8 @@
         function search(){
             let mid=document.getElementById("search").value;
             let result=document.getElementById("result")
-            let zone=document.getElementById("resultzone")
-            zone.innerHTML=" "
+            // let zone=document.getElementById("resultzone")
+            result.innerHTML=" "
 
             $.ajax({
                 url:"/member/search",
@@ -98,7 +107,7 @@
             })
         }
         function logout(){
-            location.href="/member/logout";
+            location.href="/member/logout?mid=${sessionScope.logmem.mid}";
         }
 
 
@@ -111,8 +120,8 @@
             let mid=document.getElementById("search").value;
             let pid='${sessionScope.logmem.mid}'
             let pbtn=document.getElementById("pbtn")
-            let zone=document.getElementById("resultzone")
-            zone.innerHTML=" "
+            // let zone=document.getElementById("resultzone")
+            // zone.innerHTML=" "
 
             $.ajax({
                 url:"/pfr/pfrc",
@@ -141,6 +150,7 @@
             })
         }
 
+        let pcountresult;
         function pcount(){
             let czone=document.getElementById("countzone")
             $.ajax({
@@ -149,16 +159,30 @@
                 data:{"yid":'${sessionScope.logmem.mid}'},
                 dataType:"json",
                 success:function (e){
-                    console.log("pcount suc : ")
+
+                    console.log("pcount suc : "+e)
+                    if (e>pcountresult && pcountresult!=0 || pcountresult==0 && e==1){
+                        $("#nfrbtn").click()
+                        document.getElementById("mzone1").innerHTML='<p style="font-size: 15px;margin-top: 16px;text-align: center;color:#343a40">새로운 친구신청이 도착했습니다!!</p>'
+                    }
+
                     if(e!=0){
-                    czone.innerHTML='<div id="men" class="bi bi-person-plus-fill" style="font-size: 40px;"></div>'+'<div style="font-size: 25px">'+e+'</div>'}
+                    czone.innerHTML='<div id="men" class="bi bi-person-plus-fill" style="font-size: 40px;"></div>'+'<div style="font-size: 25px">'+e+'</div>'
+                        if(e!=pcountresult){
+                            flist()
+                        }
+                        pcountresult=e;
+                    }
+
                     // czone.innerHTML='<div style="padding: 0" id="pcountbtn" onclick='+"location.href='/pfr/myfr'"+'> <h3 style="padding: 0;margin: 3px"><i class="bi bi-person-plus-fill"></i>'
                         else{
                        czone.innerHTML='<div id="men" class="bi bi-person" style="font-size: 40px"></div>'+'<div style="font-size: 25px; color: rgba(0,0,0,0)">'+e+'</div>'
+                    pcountresult=e;
                     }
-                    // document.getElementById("pcountbtn").click(function (){
-                    //     $(location.href="/pfr/myfr");
-                    // })
+
+
+
+
 
                 },
                 error:function (e){
@@ -169,9 +193,60 @@
 
 
         }
+
+        let ycountresult=0;
+        function ycount(){
+            $.ajax({
+                url:"/pfr/ycount",
+                type:"get",
+                data:{"yid":'${sessionScope.logmem.mid}'},
+                dataType:"json",
+                success:function (e){
+                    console.log("ycount suc : "+e)
+                    if(e!=ycountresult){
+                        flist()
+                    }
+                    ycountresult=e;
+
+                },
+                error:function (e){
+                    console.log("ycount err : ")
+
+                }
+            })
+
+
+        }
+
+        let logint=0
+        function logcount(){
+            let zone=document.getElementById("logzone")
+            $.ajax({
+                url:"/fr/logc",
+                type:"get",
+                data:{"mid":'${sessionScope.logmem.mid}'},
+                dataType:"text",
+                success:function (e){
+                    console.log("logint  :  "+logint)
+                    console.log("logc e : "+e)
+                    if(logint!=e){
+                         flist()
+                    }
+
+                    logint=e
+
+                },
+                error:function (){
+                    console.log("logc err : ")
+                }
+            })
+
+        }
+
             function mbtn(fid,ffname){
                 document.getElementById("mbtn11").click()
-                // mcount("msglist",fid)
+                findmsg(fid)
+                 mcount("msglist",fid)
                 let zone=document.getElementById("exampleModalLabel")
                 let footer=document.getElementById("footer")
                 let html='<table><tr><td>'
@@ -180,19 +255,19 @@
 
                 zone.innerHTML=html;
                 let html2='<textarea style="" class="form-control mb-2" id="msg" cols="20" wrap="physical"></textarea>'
-                html2+='<button type="button" style="border: gray 1px solid;color: #5c636a" class="btn btn-outline-light" data-bs-dismiss="modal" id="closemodal" >Close</button>'
+                html2+='<button type="button" style="border: gray 1px solid;color: #5c636a" class="btn btn-outline-light" data-bs-dismiss="modal" id="closemodal" onclick="flist()" >Close</button>'
                 // html2+='<button type="button" class="btn btn-primary" id="sendbtn" onclick="savemsg('+"'"+fid+"'"+')">Send</button>'
                 html2+='<button type="button" class="btn btn-secondary " id="sendbtn" onclick="savemsg('+"'"+fid+"'"+",'"+ffname+"'"+')">Send</button>'
                 // html2+='<button type="button" class="btn btn-primary" id="sendbtn" onclick="savemsg('+"'"+fid+"','"+msg+"'"+')">Send</button>'
                 footer.innerHTML=html2;
+                // mcount("msglist",fid)
 
-
-                findmsg(fid)
 
 
             }
         function flist(){
             let flistz=document.getElementById("table");
+
             $.ajax({
                 url:"/fr/findall",
                 type:"get",
@@ -201,28 +276,48 @@
                 success:function (e){
                     console.log("flist suc")
                     console.log(e.length)
-                                  let html='<table class="table table-hover " style="background-color: rgba(253,253,253,0.5);">'
+                    let html2=""
+                    let html='<table class="table table-hover " style="background-color: rgba(253,253,253,0.5);">'
                     if(e.length!=0){
 
                     for(let i in e){
+                        console.log("logc : "+e[i].logc)
+
                              let count = msgcount('${sessionScope.logmem.mid}',e[i].fid);
                                let last= findclist('${sessionScope.logmem.mid}',e[i].fid);
-                                console.log(last)
+
+
+
 
 
                               if(count>0){
                         // html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 id="msgcount11" style="margin: 0"><span class="badge bg-secondary">New '+count+'</span></h4><h4 id="last" style="overflow:hidden;padding: 0;margin: 0">'+e[i].fid+'</h4></td><td style="overflow: hidden" id="last">'+last+'</tdsty>';}
                         // html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-2" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="padding: 0;margin:0 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-2" style="padding-bottom: 0"><h5 id="msgcount11" style="text-align: center;"><span class="badge bg-secondary">New '+count+'</span></h5><sapn style="text-align: right;color:gray;font-size: 12px">'+last.mtime+'</span></td>';}
-                        html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center;"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 mb-1" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px"><span class="badge bg-secondary">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px">'+last.mtime+'</span></td>';}
+                                  if(e[i].logc==1){
+                                  html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td id=logzone>'+'<i class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center;"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 mb-1" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px"><span class="badge bg-secondary">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px">'+last.mtime+'</span></td>';
+                                  }else if(e[i].logc==0){
+                                      html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td id=logzone>'+'<i style="color:#d6d6d6" class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center;"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 mb-1" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px"><span class="badge bg-secondary">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px">'+last.mtime+'</span></td>';
+
+                                  }
+
+                              }
                               else{
+                                  if(e[i].logc==1){
+                                  html+='<tr id="btndb2" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td id="logzone1">'+'<i class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 mb-1" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px" ><span class="badge " style="color:rgba(0,0,0,0);">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px" >'+last.mtime+'</span></td>';
+                                  }else  {
+                                      html+='<tr id="btndb2" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td id="logzone1">'+'<i style="color: #d6d6d6" class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 mb-1" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px" ><span class="badge " style="color:rgba(0,0,0,0);">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px" >'+last.mtime+'</span></td>';
 
-                                  html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 mb-1" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px" ><span class="badge " style="color:rgba(0,0,0,0);">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px" >'+last.mtime+'</span></td>';}
+                                  }
 
-                        // html+='<tr id="btndb" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 style="margin-top: 15px;color: gray;padding: 0">'+e[i].fid+'</h4></td><td id="last1">'+last+'</td>';}
+
+                              }
+
+
 
                     }
                         html+='</tr>'
                     html+='</table>'
+
 
 
                     flistz.innerHTML=html;
@@ -288,13 +383,21 @@
 
                 }
             });
-            mcount("flist")
+
+             mcount("flist")
 
         }
 
-            let count=0
+            let mint=0
+            let fint=0
         function mcount(type,fid){
+            let timerVar1;
+            let timerVar;
             let mid='${sessionScope.logmem.mid}'
+            function timer(){
+                mcount(type,fid)
+            }
+
             $.ajax({
                 url:"/msg/mcount",
                 type:"get",
@@ -302,53 +405,137 @@
                 dataType:"text",
                 success:function (e){
                     console.log("mcount suc e: "+e)
-                    console.log("mcount suc count: "+count)
+                    console.log("mcount suc count: ")
                     console.log("mcount suc type: "+type)
 
-                    if(e!=count){
-                        if(type=="flist"){
-                            pcount()
-                        flist()
+
+                    if(type=="flist"){
+
+                        if(e!=fint){
+                            flist()
                         }
-                        else if(type=="msglist"){
+                        pcount(),ycount(),logcount()
+
+                        console.log("set:2000")
+                        timerVar =setTimeout( timer, 2000,"flist")
+                        fint=e;
+
+                    }else if(type=="msglist"){
+
+                        clearTimeout(timerVar);
+
+                        console.log("set:1000")
+                        timerVar1 =setTimeout( timer, 1000,"msglist",fid)
+                        if(mint!=e){
                             findmsg(fid)
-                        }
-                        count=e;
 
-                    }else {
-                        if(type=="flist"){
-                            pcount()
-                        }
+                       }
+                        mint=e;
                     }
-                },
-                error:function (){
-                    console.log("mcount err")
-                    pcount()
-                }
-            })
 
-            function timer(){
-                mcount(type,fid)
-            }
+
+                    $("#closemodal,#xbtn").click(function (){
+                        // setTimeout(clearTimeout,1000,timerVar1);
+                        clearTimeout(timerVar1);
+                    })
+
+                    $("#btndb1,#btndb2").dblclick(function (){
+                       // setTimeout(clearTimeout,1000,timerVar);
+                       clearTimeout(timerVar);
+
+                    })
+
+                    // if(type=="flist"){
+                    //     console.log("stop1")
+                    //
+                    // }else if(type=="msglist"){
+                    //     console.log("stop")
+                    //     clearTimeout(timerVar);
+                    // }
+
+
+
+
+
+
+                    // if (type=="flist"){
+                    //     stop()
+                    //     console.log("set:2000")
+                    //     timerVar1 =setTimeout( timer, 2000,"flist")
+                    // }else if(type=="msglist"){
+                    //     stop()
+                    //     console.log("set:1000")
+                    //     timerVar1 =setTimeout( timer, 1000,"msglist",fid)
+                    // }
+
+
+                    // if(e!=count){
+                    //     if(type=="flist"){
+                    //         console.log('1번')
+                    //         pcount(),ycount(),flist()
+                    //     }
+                    //     else if(type=="msglist"){
+                    //         findmsg(fid)
+                    //     }
+                    //     count=e;
+                    //
+                    // }else {
+                    //     if(type=="flist"){
+                    //         console.log('2번'+pcount()+ycount())
+                    //
+                    //     }
+                    // }
+                },
+                error:function (e){
+                    console.log("mcount err")
+
+
+            }})}
+
+
 
             // let timerVar1 =setTimeout( timer, 1000);
-            let timerVar1;
-            if (type=="flist"){
-                console.log("set:2000")
-                timerVar1 =setTimeout( timer, 2000)
-            }else if(type=="msglist"){
-                console.log("set:1000")
-                timerVar1 =setTimeout( timer, 1000)
-            }
+            // let timerVar1;
+            // if (type=="flist"){
+            //     stop()
+            //     console.log("set:2000")
+            //     timerVar1 =setTimeout( timer, 2000,"flist")
+            // }else if(type=="msglist"){
+            //     stop()
+            //     console.log("set:1000")
+            //     timerVar1 =setTimeout( timer, 1000,"msglist",fid)
+            // }
+            // function stop(){
+            //     console.log("fun stop")
+            //     clearTimeout(timerVar1);
+            // }
 
-            $("#btndb,#btndb1").dblclick(function (){
-                clearTimeout(timerVar1);
-            })
-            $("#closemodal,#xbtn,#sendbtn").click(function (){
-                clearTimeout(timerVar1);
 
-            })
-        }
+            // $("#btndb1").dblclick(function (){
+            //     console.log("클리어 1번")
+            //     clearTimeout(timerVar1);
+            //     // setTimeout(clearTimeout,500,timerVar1);
+            // })
+
+            // document.getElementById("btndb1").addEventListener("dblclick",
+            //     function (){
+            //         console.log("클리어 1번")
+            //         clearTimeout(timerVar1);
+            //         findmsg(fid)
+            //         mcount("msglist",fid)
+            //     }
+            // )
+            // $("#closemodal,#xbtn,#countzone,#modalbtn").click(function (){
+            // // $("#closemodal,#xbtn,#sendbtn,#countzone,#modalbtn").click(function (){
+            //     console.log("클리어 2번")
+            //     // setTimeout(clearTimeout,500,timerVar1);
+            //
+            //     clearTimeout(timerVar1);
+
+            // })
+
+
+
 
 
 
@@ -416,9 +603,7 @@
                     setTimeout(test,150)
 
 
-                    $("#closemodal,#xbtn").click(function (){
-                        location.href="/member/main"
-                    })
+
 
 
 
@@ -446,9 +631,10 @@
                 dataType:"text",
                 success:function (e){
                     console.log("savemsg suc")
-                    mcount("msglist",fid)
+                    findmsg(fid)
                     msg.value=null
                     msg.focus()
+                    setTimeout(findmsg,700,fid);
 
                 },
                 error:function (e){
@@ -458,6 +644,8 @@
 
 
             })
+
+
         }
         // function icon(type){
         //
@@ -484,7 +672,7 @@
     <div class="row justify-content-between">
         <div class="col-4 ">
 
-                <div class="input-group" onclick="yes()" id="countzone" style="margin-top:8px"  data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+                <div class="input-group" onclick="yes()" id="countzone" style="margin-top:8px;color: #5c636a"  data-bs-toggle="modal" href="#exampleModalToggle" role="button">
 
                 </div>
 
@@ -548,6 +736,7 @@
         </div>
         <!-- Button trigger modal -->
         <button type="button" id="mbtn11" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hssModal" hidden></button>
+                    <div id="nfrbtn"  style=";display:none;margin:0;padding: 0"  data-bs-toggle="modal" href="#exampleModalToggle2" role="button">22222</div>
 
     </div>
 <div class="form-control container" style="border-top:0;border-top-right-radius: 0;border-top-left-radius: 0;text-align:right;background-color:#E4E5E8;width: 400px;" >
@@ -556,6 +745,24 @@
 
 
 
+
+<!-- 새로운 친구신청 Modal -->
+<div class="modal fade " id="nfr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 450px;background-color: #E4E5E8">
+            <div class="modal-header">
+                <br></div>
+            <div class="modal-body container" id="nfrzone" style="font-size: 15px;background-color: rgba(253,253,253,0.5);color: #5c636a;text-align: center">
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
 
 
@@ -569,16 +776,17 @@
     <!-- 친구 찾기 Modal -->
     <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" style="background-color: #E4E5E8">
+            <div class="modal-content" style="width: 450px;background-color: #E4E5E8">
                 <div class="modal-header">
 <%--                    <h5 class="modal-title mt-4" id="exampleModalLabel"></h5>--%>
                 <br></div>
-               <div class="modal-body container" id="result" style="font-size: 15px;background-color: rgba(253,253,253,0.5);color: #5c636a;text-align: center">
+               <div class="modal-body container" id="result" style="margin: 0;font-size: 15px;background-color: rgba(253,253,253,0.5);color: #5c636a;text-align: center">
+<%--                    <span id="resultzone" style="color: #5c636a;text-align: center"></span>--%>
 
                 </div>
                 <div class="modal-footer">
-                    <span id="resultzone" style="color: #5c636a;text-align: center"></span>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="mcount('flist')">Close</button>
                 </div>
             </div>
         </div>
@@ -588,14 +796,14 @@
 
 
 <!--  메시지 Modal -->
-<div style="" class="modal fade" id="hssModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div  style="" class="modal fade" id="hssModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <%--    <div class="modal-dialog hss modal-dialog-scrollable" id="abc">--%>
     <div class="modal-dialog  " style="width: 400px" >
         <div class="modal-content" style="background-color: #E4E5E8" >
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
 <%--                Modal title--%>
-                <button type="button" id="xbtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" id="xbtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="flist()" ></button>
             </div>
             <div class="modal-body" id="msgbody" style="overflow: auto;height: 420px; background-color:rgba(253,253,253,0.9)">
                 ...
@@ -630,7 +838,7 @@
                     html='<table class="table table-borderless" style="">'
                     html+='<tr><td style="text-align: center"><div style="color:#5c636a;margin-top:20px;">내가 한 친구 신청이 없습니다.</div></td></tr>'
                 }else{
-                    html='<table class="table table-hover table-borderless" style="">'}
+                    html='<table class="table " style="">'}
                 for(let i in e){
                     html+='<tr><td style="text-align: center"><img src="/upload/'+e[i].yfname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 style="margin-top: 30px;color: #5c636a">'+e[i].yid+'</h2></td>';
                     html+='<td style="text-align: center"><button class="btn btn-outline-secondary mt-4" >신청취소</button></td></tr>'}
@@ -663,10 +871,10 @@
                     html='<table class="table table-borderless" style="">'
                     html+='<tr><td style="text-align: center"><div style="color:#5c636a;margin-top:20px;">새로운 친구 신청이 없습니다.</div></td></tr>'
                 }else{
-                html='<table class="table table-hover table-borderless" style="">'}
+                html='<table class="table " style="">'}
                 for(let i in e){
-                    html+='<tr><td style="text-align: center"><img src="/upload/'+e[i].pfname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 class="mt-4">'+e[i].pid+'</h2></td>';
-                    html+='<td style="text-align: center"><button id="test" class="test btn btn-outline-secondary mt-4" onclick="'+"yesf('"+e[i].pid+"','"+e[i].pfname+"','"+e[i].yfname+"')"+'" >수락</button>&nbsp<button class="btn btn-outline-secondary mt-4" >거절</button></td></tr>'}
+                    html+='<tr><td style="text-align: center"><img src="/upload/'+e[i].pfname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h3 class="mt-4" style="color: #5c636a">'+e[i].pid+'</h3></td>';
+                    html+='<td style="text-align: center"><button id="test" class="test btn btn-outline-secondary mt-4" onclick="'+"yesf('"+e[i].pid+"','"+e[i].pfname+"','"+e[i].yfname+"')"+'">수락</button>&nbsp<button class="btn btn-outline-secondary mt-4" onclick="'+"nof('"+e[i].pid+"','"+e[i].pfname+"','"+e[i].yfname+"')"+'" >거절</button></td></tr>'}
 
                 html+='</table>'
                 zone.innerHTML=html;
@@ -682,6 +890,7 @@
     }
     function yesf(pid,pfname,yfname){
         let yid='${sessionScope.logmem.mid}';
+        let zone=document.getElementById("mzone")
         $.ajax({
             url:"/pfr/yesf",
             type:"get",
@@ -689,8 +898,12 @@
             dataType:"text",
             success:function (e){
                 console.log("yesf success")
-                yes();
-                alert(pid+" 님의 친구신청을 수락하셨습니다.")
+                zone.innerHTML='<div style="text-align: center;margin-top: 30px;margin-bottom: 30px;color: #51585e"><h3 style="text-align:center;color: #343a40"><b>'+pid+'</b></h3>님의 친구신청을 수락 하였습니다.</div>'
+
+                // zone.innerHTML='<div class="container" style="margin-top:30px;margin-bottom:30px;color: #51585e">이제 '+pid+' 님과 친구입니다.</div>'
+                flist()
+                // yes();
+                // alert(pid+" 님의 친구신청을 수락하셨습니다.")
             },
             error:function (e){
                 console.log("yesf error")
@@ -701,19 +914,41 @@
 
     }
 
+    function nof(pid,pfname,yfname){
+        let yid='${sessionScope.logmem.mid}';
+        let zone=document.getElementById("mzone")
+        $.ajax({
+            url:"/pfr/nof",
+            type:"get",
+            data:{"pid":pid,"yid":yid,"pfname":pfname,"yfname":yfname},
+            dataType:"text",
+            success:function (e){
+                console.log("nof success")
+                zone.innerHTML='<div style="text-align: center;margin-top: 30px;margin-bottom: 30px;color: #51585e"><h3 style="text-align:center;color: #343a40"><b>'+pid+'</b></h3>님의 친구신청을 거절 하였습니다.</div>'
+                // yes();
+                // alert(pid+" 님의 친구신청을 수락하셨습니다.")
+            },
+            error:function (e){
+                console.log("nof error")
+
+            }
+
+        })
+    }
+
 </script>
 
 
 
 
 
-<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+<div class="modal fade" id="exampleModalToggle" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
 <%--    <div class="modal-dialog modal-dialog-centered">--%>
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: #E4E5E8">
+        <div class="modal-content" style="width:450px ;background-color: #E4E5E8">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalToggleLabel">내가 받은 친구 신청</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="mcount('flist')"></button>
             </div>
             <div class="modal-body" style="background-color: rgba(253,253,253,0.5)" id="mzone">
 
@@ -727,16 +962,16 @@
 <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
 <%--    <div class="modal-dialog modal-dialog-centered">--%>
     <div class="modal-dialog ">
-        <div class="modal-content" style="background-color: #E4E5E8">
+        <div class="modal-content" style="width: 450px;background-color: #E4E5E8">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalToggleLabel2">내가 한 친구신청</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="mcount('flist')"></button>
             </div>
             <div class="modal-body" style="background-color: rgba(253,253,253,0.5)" id="mzone1">
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onclick="yes()">내가 받은 친구신청 보기</button>
+                <button  class="btn btn-secondary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onclick="yes()">내가 받은 친구신청 보기</button>
             </div>
         </div>
     </div>

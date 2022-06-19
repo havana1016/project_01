@@ -37,18 +37,31 @@ public class msgRepository {
     }
 
     public int mcount(msgDto mem,String type) {
-        int result=0;
-
+        Integer result=0;
+        int result2=0;
         if(type.equals("flist")){
-        result=sql.selectOne("msg.mcount",mem);}
+
+        result=sql.selectOne("msg.mcount",mem);
+        if(result==null){
+            result=0;
+        }
+        }
         else if(type.equals("msglist")){
-            result=sql.selectOne("msg.mcount1",mem);}
+            result=sql.selectOne("msg.mcount1",mem);
+            if(result==null){
+                result=0;
+            }
+        }
 
         return result;
     }
 
     public msgDto findclist(msgDto mem) {
         msgDto result=sql.selectOne("msg.findclist",mem);
+
+//
+
+
 
         return result;
     }

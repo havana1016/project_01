@@ -22,7 +22,7 @@ public class mService {
         String mfname = mem.getMf().getOriginalFilename();//2
         mfname =System.currentTimeMillis()+"-"+mfname;//2.1
         mem.setMfname(mfname);//3
-        String savePath ="d:\\spring_img\\"+mfname;//4
+        String savePath ="c:\\spring_img\\"+mfname;//4
 
         if(!mem.getMf().isEmpty()){
             mem.getMf().transferTo(new File(savePath));
@@ -32,4 +32,6 @@ public class mService {
         System.out.println("end : "+mem);
         return mr.save(mem);//6}
     }
+
+
 }

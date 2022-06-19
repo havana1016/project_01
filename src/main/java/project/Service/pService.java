@@ -34,4 +34,11 @@ public class pService {
     public int yesf(pDto mem) {
         return pr.yesf(mem);
     }
+    public int nof(pDto mem) {
+        return pr.nof(mem);
+    }
+
+    public int ycount(pDto mem) {
+        return pr.ycount(mem);
+    }
 }

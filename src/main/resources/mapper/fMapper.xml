@@ -16,6 +16,28 @@
     <update id="mtime">
         update ftable set mtime=#{mtime} where mid=#{mget} and fid=#{mset}
     </update>
+
+    <update id="logc">
+        update ftable set logc=1 where fid=#{mid}
+    </update>
+
+    <update id="logc1">
+        update ftable set logc=1 where fid=#{mid}
+    </update>
+
+    <update id="logc2">
+        update ftable set logc=1 where fid=#{fid}
+    </update>
+
+
+    <update id="logoutc">
+        update ftable set logc=0 where fid=#{mid}
+    </update>
+
+    <select id="lcount" resultType="int">
+        select sum(logc) from ftable where mid=#{mid}
+    </select>
+
 <!--    <update id="mtime">-->
 <!--        update ftable set mtime=#{mtime} where mid=#{mset} and fid=#{mget} or mid=#{mget} and fid=#{mset}-->
 <!--    </update>-->

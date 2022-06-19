@@ -11,6 +11,8 @@
         insert into mtable (mid,mpw,mfname) values (#{mid},#{mpw},#{mfname})
     </insert>
 
+
+
 </mapper>
 
 

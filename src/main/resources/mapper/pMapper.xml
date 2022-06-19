@@ -20,8 +20,17 @@
     <select id="pcount" resultType="int">
         select count(pid) from pftable where yid=#{yid} and fbool=0
     </select>
+    <select id="ycount" resultType="int">
+        select count(pid) from pftable where pid=#{yid} and fbool=0
+    </select>
+
+
     <update id="yesf">
         update pftable set fbool=1 where pid=#{pid} and yid=#{yid}
+    </update>
+
+    <update id="nof">
+        delete from pftable where pid=#{pid} and yid=#{yid}
     </update>
 </mapper>
 

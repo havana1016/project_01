@@ -34,12 +34,11 @@
         select  max(mtime) from msgtable where mset=#{mset} and mget=#{mget}
     </select>
     <select id="findclist" resultType="msg">
-        select * from msgtable where mtime in
-                                     (SELECT max(mtime) FROM msgtable where mget=#{mget} and mset=#{mset} or mget=#{mset} and mset=#{mget} )
+        select * from msgtable where mtime =
+                                     (SELECT max(mtime) FROM msgtable where mget=#{mget} and mset=#{mset} or mget=#{mset} and mset=#{mget})
     </select>
-    <select id="findclist1" resultType="msg">
-        select mget,mset,gfname,sfname,msg,max(mtime) from msgtable where mget=#{mget} group by mset
-    </select>
+
+
 </mapper>
 
 

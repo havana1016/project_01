@@ -3,6 +3,7 @@ package project.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.Dto.fDto;
+import project.Dto.mDto;
 import project.Dto.pDto;
 import project.Repository.fRepository;
 
@@ -31,5 +32,17 @@ public class fService {
 
     public List<fDto> findall(fDto mem) {
         return fr.findall(mem);
+    }
+
+    public void logoutc(String mid) {
+        fr.logoutc(mid);
+    }
+
+    public void logc(mDto mem) {
+        fr.logc(mem);
+    }
+
+    public int logcount(String mid) {
+        return fr.logcount(mid);
     }
 }

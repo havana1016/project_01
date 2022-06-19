@@ -18,4 +18,6 @@ public class mRepository {
     public int save(mDto mem) {
         return sql.insert("mem.save",mem);
     }
+
+
 }

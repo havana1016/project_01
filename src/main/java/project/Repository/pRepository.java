@@ -39,4 +39,11 @@ public class pRepository {
     public int yesf(pDto mem) {
         return sql.update("pfr.yesf",mem);
     }
+    public int nof(pDto mem) {
+        return sql.delete("pfr.nof",mem);
+    }
+
+    public int ycount(pDto mem) {
+        return sql.selectOne("pfr.ycount",mem);
+    }
 }

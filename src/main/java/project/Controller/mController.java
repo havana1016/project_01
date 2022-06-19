@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import project.Dto.mDto;
+import project.Service.fService;
 import project.Service.mService;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,8 @@ import java.io.IOException;
 public class mController  {
     @Autowired
     mService ms;
+    @Autowired
+    fService fs;
     @GetMapping("save")
     String saveform(){
         return "/member/save-form1";
@@ -40,6 +43,7 @@ public class mController  {
         if(result!=null){
             if(result.getMpw().equals(mem.getMpw())){
                 session.setAttribute("logmem",result);
+                 fs.logc(mem);
                 return result;
             }
         }return null;
@@ -59,7 +63,8 @@ public class mController  {
 
     }
     @GetMapping("logout")
-    public String logout(HttpSession session){
+    public String logout(@RequestParam("mid")String mid, HttpSession session){
+        fs.logoutc(mid);
         session.invalidate();
         return "index";
     }

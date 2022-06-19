@@ -69,6 +69,12 @@ public class pController {
         return ps.pcount(mem);
     }
 
+    @GetMapping("ycount")
+    @ResponseBody
+    int ycount(@ModelAttribute pDto mem){
+        return ps.ycount(mem);
+    }
+
     @GetMapping("yesf")
     @ResponseBody String yesf(@ModelAttribute pDto mem){
 
@@ -76,6 +82,17 @@ public class pController {
             if(ps.yesf(mem)>0){
             return "ok";}
         }
+        return null;
+
+    }
+
+    @GetMapping("nof")
+    @ResponseBody String nof(@ModelAttribute pDto mem){
+
+
+            if(ps.nof(mem)>0){
+                return "ok";}
+
         return null;
 
     }
