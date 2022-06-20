@@ -32,6 +32,10 @@
     <update id="nof">
         delete from pftable where pid=#{pid} and yid=#{yid}
     </update>
+
+    <delete id="del">
+        delete from pftable where pid=#{mid} and yid=#{fid} or pid=#{fid} and yid=#{mid}
+    </delete>
 </mapper>
 
 

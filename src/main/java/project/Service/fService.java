@@ -42,7 +42,11 @@ public class fService {
         fr.logc(mem);
     }
 
-    public int logcount(String mid) {
+    public Integer logcount(String mid) {
         return fr.logcount(mid);
+    }
+
+    public int delfr(fDto mem) {
+        return fr.delfr(mem);
     }
 }

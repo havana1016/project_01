@@ -13,9 +13,12 @@ public class fRepository {
     @Autowired
     SqlSessionTemplate sql;
     public int yesf(fDto fr) {
+
         int result=sql.insert("fr.save",fr);
-        sql.update("fr.logc2",fr);
-        sql.update("fr.logc1",fr);
+        sql.update("fr.logc",fr);
+        mDto mem=sql.selectOne("mem.findid",fr.getFid());
+        if(mem.getLogc()==1){
+        sql.update("fr.logc",fr);}
         return result;
 
     }
@@ -33,7 +36,14 @@ public class fRepository {
 
     }
 
-    public int logcount(String mid) {
+    public Integer logcount(String mid) {
         return sql.selectOne("fr.lcount",mid);
+    }
+
+    public int delfr(fDto mem) {
+        int result=sql.delete("fr.delfr",mem);
+        System.out.println("fRepository.delfr");
+        System.out.println("result= " + result);
+        return result;
     }
 }

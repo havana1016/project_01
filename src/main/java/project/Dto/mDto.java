@@ -10,5 +10,6 @@ public class mDto {
     String mpw;
     MultipartFile mf;
     String mfname;
+    int logc;
 
 }

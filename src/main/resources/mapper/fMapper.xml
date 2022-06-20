@@ -21,9 +21,9 @@
         update ftable set logc=1 where fid=#{mid}
     </update>
 
-    <update id="logc1">
-        update ftable set logc=1 where fid=#{mid}
-    </update>
+<!--    <update id="logc1">-->
+<!--        update ftable set logc=1 where fid=#{mid}-->
+<!--    </update>-->
 
     <update id="logc2">
         update ftable set logc=1 where fid=#{fid}
@@ -34,9 +34,13 @@
         update ftable set logc=0 where fid=#{mid}
     </update>
 
-    <select id="lcount" resultType="int">
+    <select id="lcount" resultType="Integer">
         select sum(logc) from ftable where mid=#{mid}
     </select>
+
+    <delete id="delfr">
+        delete from ftable where mid=#{mid} and fid=#{fid} or mid=#{fid} and fid=#{mid}
+    </delete>
 
 <!--    <update id="mtime">-->
 <!--        update ftable set mtime=#{mtime} where mid=#{mset} and fid=#{mget} or mid=#{mget} and fid=#{mset}-->

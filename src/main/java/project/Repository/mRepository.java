@@ -20,4 +20,11 @@ public class mRepository {
     }
 
 
+    public void logc(mDto mem) {
+        sql.update("mem.logc",mem);
+    }
+
+    public void logoutc(String mid) {
+        sql.update("mem.logoutc",mid);
+    }
 }

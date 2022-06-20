@@ -2,6 +2,7 @@ package project.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import project.Dto.fDto;
 import project.Dto.pDto;
 import project.Repository.pRepository;
 
@@ -40,5 +41,9 @@ public class pService {
 
     public int ycount(pDto mem) {
         return pr.ycount(mem);
+    }
+
+    public void delfr(fDto mem) {
+        pr.delfr(mem);
     }
 }

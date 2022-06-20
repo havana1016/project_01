@@ -3,6 +3,7 @@ package project.Repository;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import project.Dto.fDto;
 import project.Dto.pDto;
 
 import java.util.List;
@@ -45,5 +46,9 @@ public class pRepository {
 
     public int ycount(pDto mem) {
         return sql.selectOne("pfr.ycount",mem);
+    }
+
+    public void delfr(fDto mem) {
+        sql.delete("pfr.del",mem);
     }
 }

@@ -265,8 +265,52 @@
 
 
             }
+
+        function delfr(fid){
+            let czone=document.getElementById("cancelzone")
+                let mid='${sessionScope.logmem.mid}'
+            alert("fid: "+fid)
+                $.ajax({
+                    url:"/fr/delfr",
+                    type:"get",
+                    data:{"fid":fid,"mid":mid},
+                    dataType:"text",
+                    success:function (e){
+                        console.log("delfr suc  e:   "+e)
+                        if (e>0){
+                            czone.innerHTML="<br>친구끊기가 완료 되었습니다.<br><br>"
+
+
+                        }
+                    },
+                    error:function (){
+                        console.log("delfr err")
+                    }
+                })
+        }
+
+
+            function cancelfr(fid,ffname){
+                let czone=document.getElementById("cancelzone")
+                czone.innerHTML="test"
+                let html='<table ><tr ><td>'
+                html+='<img src="/upload/'+ffname+'" height="70px" width="70px" style="margin-left:5px;border-radius: 30%;border: gray 2px solid"></td><td>'
+                html+='<p style="text-align:center;margin-left: 20px; color: #5c636a">정말 취소 하시겠습니까?</p><h3 class="mt-4" style="margin-left: 30px">'+fid+'</h3></td>'
+                html+='<td ><button id="canclebtn" style="margin-left: 25px" class="btn btn-secondary" onclick="delfr('+"'"+fid+"'"+')">친구끊기</button></td></tr></table>'
+                czone.innerHTML=html;
+
+
+
+
+            }
+
+
+
         function flist(){
             let flistz=document.getElementById("table");
+            let czone=document.getElementById("cancelzone")
+
+
 
             $.ajax({
                 url:"/fr/findall",
@@ -277,7 +321,7 @@
                     console.log("flist suc")
                     console.log(e.length)
                     let html2=""
-                    let html='<table class="table table-hover " style="background-color: rgba(253,253,253,0.5);">'
+                    let html='<table class="table table-hover table-borderless" style="background-color: rgba(253,253,253,0.5);">'
                     if(e.length!=0){
 
                     for(let i in e){
@@ -294,18 +338,34 @@
                         // html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-1" ></td><td><h4 id="msgcount11" style="margin: 0"><span class="badge bg-secondary">New '+count+'</span></h4><h4 id="last" style="overflow:hidden;padding: 0;margin: 0">'+e[i].fid+'</h4></td><td style="overflow: hidden" id="last">'+last+'</tdsty>';}
                         // html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;" class="mt-2" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="padding: 0;margin:0 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-2" style="padding-bottom: 0"><h5 id="msgcount11" style="text-align: center;"><span class="badge bg-secondary">New '+count+'</span></h5><sapn style="text-align: right;color:gray;font-size: 12px">'+last.mtime+'</span></td>';}
                                   if(e[i].logc==1){
-                                  html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td id=logzone>'+'<i class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center;"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 mb-1" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px"><span class="badge bg-secondary">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px">'+last.mtime+'</span></td>';
+                                  html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "data-bs-toggle="collapse" href="#collapseExample'+i+'" role="button" aria-expanded="false" aria-controls="collapseExample"><td id=logzone>'+'<i class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center;"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 " ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px"><span class="badge bg-secondary">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px">'+last.mtime+'</span></td>';
+                                      html+='</tr><tr style="border-bottom: #E4E5E8 1px solid"><td colspan="4" ><div class="collapse" id="collapseExample'+i+'" style="text-align: center;">'
+                                      // html+='<div class="btn-group container" style="" >'
+                                      html+='<button class="btn  btn-outline-secondary" id="chatbtn" onclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') ">Go to Chat</button>'
+                                      html+='<button style="margin-left: 25px" class="btn  btn-secondary" onclick="cancelfr('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+')" data-bs-toggle="modal" data-bs-target="#cancelmodal" id="cbt">친구 취소</button></div></td></tr>'
                                   }else if(e[i].logc==0){
-                                      html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td id=logzone>'+'<i style="color:#d6d6d6" class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center;"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 mb-1" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px"><span class="badge bg-secondary">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px">'+last.mtime+'</span></td>';
+                                      html+='<tr id="btndb1" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "data-bs-toggle="collapse" href="#collapseExample'+i+'" role="button" aria-expanded="false" aria-controls="collapseExample"><td id=logzone>'+'<i style="color:#d6d6d6" class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center;"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 " ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px"><span class="badge bg-secondary">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px">'+last.mtime+'</span></td>';
+                                      html+='</tr><tr style="border-bottom: #E4E5E8 1px solid"><td colspan="4" ><div class="collapse" id="collapseExample'+i+'" style="text-align: center;">'
+                                      // html+='<div class="btn-group container" style="" >'
+                                      html+='<button class="btn  btn-outline-secondary" id="chatbtn" onclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') ">Go to Chat</button>'
+                                      html+='<button style="margin-left: 25px" class="btn  btn-secondary"  onclick="cancelfr('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+')" data-bs-toggle="modal" data-bs-target="#cancelmodal" id="cbt">친구 취소</button></div></td></tr>'
 
                                   }
 
                               }
                               else{
                                   if(e[i].logc==1){
-                                  html+='<tr id="btndb2" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td id="logzone1">'+'<i class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 mb-1" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px" ><span class="badge " style="color:rgba(0,0,0,0);">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px" >'+last.mtime+'</span></td>';
+                                  html+='<tr id="btndb2" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "data-bs-toggle="collapse" href="#collapseExample'+i+'" role="button" aria-expanded="false" aria-controls="collapseExample"><td id="logzone1">'+'<i class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 " ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px" ><span class="badge " style="color:rgba(0,0,0,0);">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px" >'+last.mtime+'</span></td>';
+                                      html+='</tr><tr style="border-bottom: #E4E5E8 1px solid"><td colspan="4" ><div class="collapse" id="collapseExample'+i+'" style="text-align: center;">'
+                                      // html+='<div class="btn-group container" style="" >'
+                                      html+='<button id="chatbtn" class="btn  btn-outline-secondary" onclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') ">Go to Chat</button>'
+                                      html+='<button style="margin-left: 25px" class="btn  btn-secondary" onclick="cancelfr('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+')" data-bs-toggle="modal" data-bs-target="#cancelmodal" id="cbt">친구 취소</button></div></td></tr>'
                                   }else  {
-                                      html+='<tr id="btndb2" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "><td id="logzone1">'+'<i style="color: #d6d6d6" class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 mb-1" ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px" ><span class="badge " style="color:rgba(0,0,0,0);">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px" >'+last.mtime+'</span></td>';
+                                      html+='<tr id="btndb2" ondblclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') "data-bs-toggle="collapse" href="#collapseExample'+i+'" role="button" aria-expanded="false" aria-controls="collapseExample"><td id="logzone1">'+'<i style="color: #d6d6d6" class="bi bi-check-circle-fill"></i>'+'</td><td style="text-align: center"><img src="/upload/'+e[i].ffname+'" width="50px" height="50px" style="border-radius: 30%;border: #BCBCBD 2px solid" class="mt-2 " ></td><td style="overflow: hidden;max-width: 200px;"><h4 style="color: #5c636a;padding: 0;margin:10px 0 5px 0 ">'+e[i].fid+'</h4><span style="height:10px;overflow: hidden;color: gray;font-size: 13px" id="last">'+last.msg+'</span></td><td class="col-3" style="padding-bottom: 0"><p id="msgcount11" style="text-align: center;margin-bottom: 10px" ><span class="badge " style="color:rgba(0,0,0,0);">'+count+'</span></p><sapn style="text-align: right;color:gray;font-size: 12px" >'+last.mtime+'</span></td>';
+                                      html+='</tr><tr style="border-bottom: #E4E5E8 1px solid"><td colspan="4"><div class="collapse" id="collapseExample'+i+'" style="text-align: center;">'
+                                      // html+='<div class="btn-group container" style="" >'
+                                      html+='<button id="chatbtn" class="btn  btn-outline-secondary" onclick="mbtn('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+') ">Go to Chat</button>'
+                                      html+='<button style="margin-left: 25px" class="btn  btn-secondary" onclick="cancelfr('+"'"+e[i].fid+"'"+",'"+e[i].ffname+"'"+')" data-bs-toggle="modal" data-bs-target="#cancelmodal" id="cbt">친구 취소</button></div></td></tr>'
 
                                   }
 
@@ -315,18 +375,19 @@
 
 
                     }
-                        html+='</tr>'
-                    html+='</table>'
-
-
-
+                        html+='</table>'
                     flistz.innerHTML=html;
+
+
+
 
 
 
                 }else{
                         flistz.innerHTML='<table style="background-color: rgba(253,253,253,0.8);width: 380px;height: 500px;color: #5c636a;font-size:20px;text-align: center"><tr><td>친구신청을 먼저 해주세요.</td></tr></table>'
                     }
+
+
 
                     function msgcount(mset,mget){
                         let result=""
@@ -388,6 +449,9 @@
 
         }
 
+
+
+
             let mint=0
             let fint=0
         function mcount(type,fid){
@@ -439,9 +503,16 @@
                         clearTimeout(timerVar1);
                     })
 
+
+
                     $("#btndb1,#btndb2").dblclick(function (){
                        // setTimeout(clearTimeout,1000,timerVar);
                        clearTimeout(timerVar);
+
+                    })
+                    $("#chatbtn,#cbt").click(function (){
+                        // setTimeout(clearTimeout,1000,timerVar);
+                        clearTimeout(timerVar);
 
                     })
 
@@ -669,19 +740,20 @@
 <%--<jsp:include page="/resources/layout/header.jsp" ></jsp:include>--%>
 
 <div class="form-control container" style="background-color:#E4E5E8;padding: 10px 20px 0 25px;width: 400px;margin-top:20px;border-bottom-right-radius: 0;border-bottom-left-radius: 0 " >
-    <div class="row justify-content-between">
-        <div class="col-4 ">
+<%--    <div class="row justify-content-between">--%>
+<%--        <div class="col-4 ">--%>
 
-                <div class="input-group" onclick="yes()" id="countzone" style="margin-top:8px;color: #5c636a"  data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+<%--&lt;%&ndash;                <div class="input-group" onclick="yes()" id="countzone" style="margin-top:8px;color: #5c636a"  data-bs-toggle="modal" href="#exampleModalToggle" role="button">&ndash;%&gt;--%>
 
-                </div>
-
-
-        </div>
+<%--                </div>--%>
 
 
-    <div class="col-6 " style="margin-top:10px;margin-bottom: 20px">
-        <div class="input-group" >
+<%--        </div>--%>
+
+
+    <div class="" style=";margin-top:10px;margin-bottom: 20px">
+        <div class="" style="">
+        <div class="input-group " style="margin-left: 160px;width:200px;" >
             <input style="border: 2px gray solid" id="search" class="form-control"
                     placeholder="Find ID" onkeyup="enter()">
             <button class="input-group-text btn btn-secondary" id="modalbtn" onclick="pfrc()" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search"></i></button>
@@ -691,16 +763,6 @@
 </div>
 
 
-<%--<div class="collapse" id="collapseExample" style="">--%>
-<%--    <div class="form-control container" style="border-radius:0;width: 400px;border-top: 0" >--%>
-<%--        &lt;%&ndash;        <div class="card card-body" >&ndash;%&gt;--%>
-<%--        <div class="btn-group container" style="margin-top: 20px; margin-bottom: 20px;" >--%>
-<%--            <button class="btn  btn-outline-secondary" onclick="location.href='/pfr/myfr'">친구관리</button>--%>
-<%--            <button class="btn  btn-outline-secondary" onclick="logout()">로그아웃</button>--%>
-<%--        </div>--%>
-<%--        &lt;%&ndash;       </div>&ndash;%&gt;--%>
-<%--    </div>--%>
-<%--</div>--%>
 
 
 <%--<div class="form-control container" style="border-radius:0;width: 400px;height: 100px;background-color:#AEAEAF;border-inline:#E4E5E8 10px solid " >--%>
@@ -715,6 +777,16 @@
         </tr>
     </table></div>
 
+<%--<div class="collapse" id="collapseExample" style="">--%>
+<%--    <div class="form-control container" style="border-radius:0;width: 400px;border-top: 0" >--%>
+<%--        &lt;%&ndash;        <div class="card card-body" >&ndash;%&gt;--%>
+<%--        <div class="btn-group container" style="margin-top: 20px; margin-bottom: 20px;" >--%>
+<%--            <button class="btn  btn-outline-secondary" onclick="">Go to Chat</button>--%>
+<%--            <button class="btn  btn-outline-secondary" onclick="">친구 취소</button>--%>
+<%--        </div>--%>
+<%--        &lt;%&ndash;       </div>&ndash;%&gt;--%>
+<%--    </div>--%>
+<%--</div>--%>
 <%--    <div class="collapse" id="collapseExample" style="">--%>
 <%--    <div class="form-control container" style="border-radius:0;width: 450px;border-bottom: 0" >--%>
 <%--&lt;%&ndash;        <div class="card card-body" >&ndash;%&gt;--%>
@@ -730,7 +802,6 @@
 
 <%--    <div class="mt-2">--%>
         <div id="table" class="" style="border-radius: 0%;height: 500px;overflow:auto;">
-<%--        <div id="table" class="htable" style="height:auto; overflow: auto">--%>
 
 
         </div>
@@ -739,8 +810,23 @@
                     <div id="nfrbtn"  style=";display:none;margin:0;padding: 0"  data-bs-toggle="modal" href="#exampleModalToggle2" role="button">22222</div>
 
     </div>
-<div class="form-control container" style="border-top:0;border-top-right-radius: 0;border-top-left-radius: 0;text-align:right;background-color:#E4E5E8;width: 400px;" >
-    <i style="font-size: 40px;margin: 10px 10px 10px 0" class="bi bi-box-arrow-right" onclick="logout()"></i>
+<div class="form-control container" style="color: #5c636a;border-top:0;border-top-right-radius: 0;border-top-left-radius: 0;text-align:right;background-color:#E4E5E8;width: 400px;" >
+    <div class="row justify-content-between">
+        <div class="col-4 " style="margin-left: 10px">
+            <div class="input-group" onclick="yes()" id="countzone" style="margin-top:8px;margin-bottom: 9px;color: #5c636a"  data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+            </div>
+<%--            <p style="text-align:left;margin-bottom: 0;" >Frinends</p>--%>
+
+        </div>
+
+            <div class="col-4 mt-2">
+                <i style="font-size: 40px;margin: 20px 0px 10px 0" class="bi bi-box-arrow-right" onclick="logout()"></i>
+<%--                <p style="text-align: right;margin-bottom: 0;margin-right:7px;" ></p>--%>
+
+            </div>
+        </div>
+<%--    <i style="font-size: 40px;margin: 10px 10px 10px 0" class="bi bi-box-arrow-right" onclick="logout()"></i><p style="text-align: right;margin-bottom: 0;margin-right:7px;" >Log-out</p>--%>
+<%--    <i style="font-size: 40px;margin: 10px 10px 10px 0" class="bi bi-box-arrow-right" onclick="logout()"></i><p style="text-align: right;margin-bottom: 0;margin-right:7px;" >Log-out</p>--%>
 </div>
 
 
@@ -766,6 +852,26 @@
 
 
 
+
+
+
+
+<!--  cancel Modal -->
+<div class="modal fade  container" id="cancelmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 430px">
+            <div class="modal-header ">
+                <button type="button" onclick="flist()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body " id="cancelzone" >
+                ...
+            </div>
+            <div class="modal-footer ">
+                <button type="button" onclick="flist()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -833,6 +939,7 @@
             dataType:"json",
             success:function (e){
                 console.log("plz success : "+e)
+                let type="cancel"
                 let html;
                 if(e.length==0){
                     html='<table class="table table-borderless" style="">'
@@ -841,7 +948,8 @@
                     html='<table class="table " style="">'}
                 for(let i in e){
                     html+='<tr><td style="text-align: center"><img src="/upload/'+e[i].yfname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h2 style="margin-top: 30px;color: #5c636a">'+e[i].yid+'</h2></td>';
-                    html+='<td style="text-align: center"><button class="btn btn-outline-secondary mt-4" >신청취소</button></td></tr>'}
+                    html+='<td style="text-align: center"><button class="btn btn-outline-secondary mt-4" onclick="'+"nof('"+e[i].yid+"','"+e[i].pfname+"','"+e[i].yfname+"','"+type+"'"+')"'+'">신청취소</button></td></tr>'}
+                    // html+='<td style="text-align: center"><button class="btn btn-outline-secondary mt-4" >신청취소</button></td></tr>'}
                 html+='</table>';
                 zone.innerHTML=html;
             },
@@ -856,7 +964,7 @@
 
     function yes(){
         let zone=document.getElementById("mzone");
-
+        let type="nof"
         let yid='${sessionScope.logmem.mid}'
         $.ajax({
             url:"/pfr/yes",
@@ -874,7 +982,7 @@
                 html='<table class="table " style="">'}
                 for(let i in e){
                     html+='<tr><td style="text-align: center"><img src="/upload/'+e[i].pfname+'" width="70px" height="70px" style="border-radius: 30%;" class="mt-1" ></td><td><h3 class="mt-4" style="color: #5c636a">'+e[i].pid+'</h3></td>';
-                    html+='<td style="text-align: center"><button id="test" class="test btn btn-outline-secondary mt-4" onclick="'+"yesf('"+e[i].pid+"','"+e[i].pfname+"','"+e[i].yfname+"')"+'">수락</button>&nbsp<button class="btn btn-outline-secondary mt-4" onclick="'+"nof('"+e[i].pid+"','"+e[i].pfname+"','"+e[i].yfname+"')"+'" >거절</button></td></tr>'}
+                    html+='<td style="text-align: center"><button id="test" class="test btn btn-outline-secondary mt-4" onclick="'+"yesf('"+e[i].pid+"','"+e[i].pfname+"','"+e[i].yfname+"')"+'">수락</button>&nbsp<button class="btn btn-outline-secondary mt-4" onclick="'+"nof('"+e[i].pid+"','"+e[i].pfname+"','"+e[i].yfname+"','"+type+"'"+')"'+'">거절</button></td></tr>'}
 
                 html+='</table>'
                 zone.innerHTML=html;
@@ -914,9 +1022,11 @@
 
     }
 
-    function nof(pid,pfname,yfname){
+    function nof(pid,pfname,yfname,type){
         let yid='${sessionScope.logmem.mid}';
         let zone=document.getElementById("mzone")
+        let zone1=document.getElementById("mzone1")
+        if(type=="nof"){
         $.ajax({
             url:"/pfr/nof",
             type:"get",
@@ -933,7 +1043,26 @@
 
             }
 
-        })
+        })}else if(type=="cancel"){
+            $.ajax({
+                url:"/pfr/nof",
+                type:"get",
+                data:{"pid":yid,"yid":pid,"pfname":yfname,"yfname":pfname},
+                dataType:"text",
+                success:function (e){
+                    console.log("cancel success")
+                    zone1.innerHTML='<div style="text-align: center;margin-top: 30px;margin-bottom: 30px;color: #51585e"><h3 style="text-align:center;color: #343a40"><b>'+pid+'</b></h3>님에게 한 친구신청을 취소 하였습니다.</div>'
+                    // yes();
+                    // alert(pid+" 님의 친구신청을 수락하셨습니다.")
+                },
+                error:function (e){
+                    console.log("cencel error")
+
+                }
+
+            })
+
+        }
     }
 
 </script>

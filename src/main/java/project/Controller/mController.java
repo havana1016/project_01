@@ -44,6 +44,7 @@ public class mController  {
             if(result.getMpw().equals(mem.getMpw())){
                 session.setAttribute("logmem",result);
                  fs.logc(mem);
+                 ms.logc(mem);
                 return result;
             }
         }return null;
@@ -65,6 +66,7 @@ public class mController  {
     @GetMapping("logout")
     public String logout(@RequestParam("mid")String mid, HttpSession session){
         fs.logoutc(mid);
+        ms.logoutc(mid);
         session.invalidate();
         return "index";
     }

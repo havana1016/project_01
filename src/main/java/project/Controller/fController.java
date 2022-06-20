@@ -8,6 +8,7 @@ import project.Dto.fDto;
 import project.Dto.msgDto;
 import project.Service.fService;
 import project.Service.msgService;
+import project.Service.pService;
 
 import java.util.List;
 
@@ -18,6 +19,8 @@ public class fController {
     fService fs;
     @Autowired
     msgService msgs;
+    @Autowired
+    pService ps;
     @GetMapping("findall")
     @ResponseBody List<fDto> findall(@ModelAttribute fDto mem, Model model){
         String mset= mem.getMid();
@@ -30,7 +33,21 @@ public class fController {
         return fs.findall(mem);
     }
     @GetMapping("logc")
-    @ResponseBody int logcount(@RequestParam("mid")String mid){
-        return fs.logcount(mid);
+    @ResponseBody Integer logcount(@RequestParam("mid")String mid){
+         Integer result=fs.logcount(mid);
+        System.out.println("fController.logcount");
+        System.out.println("result = " + result);
+        if (result==null){
+            result=0;
+        }
+        return result;
     }
+
+    @GetMapping("delfr")
+    @ResponseBody int delfr(@ModelAttribute fDto mem){
+        ps.delfr(mem);
+
+        return fs.delfr(mem);
+    }
+
 }

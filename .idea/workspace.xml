@@ -9,27 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02c26ff4-74f6-4b22-82e5-20150f802932" name="Changes" comment="채팅창 메인화면 불러오기 로직 변경,&#10;메인화면에 친구에게 받은 최근메시지 띄워주고 메시지받은 시간에 따라 친구리스트 정렬 바꾸기 완성 ,새로운메시지가 오면 새로운 메시지 알려주고 최상단으로 리스트 순서 변경,읽지 않은 메시지 카운트해서 표시하기 완성">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Controller/fController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Controller/fController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Controller/mController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Controller/mController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Controller/pController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Controller/pController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Dto/fDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Dto/fDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/fRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/fRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/mRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/mRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/msgRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/msgRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Repository/pRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Repository/pRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/fService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/fService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/mService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/mService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Service/pService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Service/pService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/fMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/fMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/mMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/mMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/msgMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/msgMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/pMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/pMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/main.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="02c26ff4-74f6-4b22-82e5-20150f802932" name="Changes" comment="채팅창 메인화면 불러오기 로직 변경,&#10;메인화면에 친구에게 받은 최근메시지 띄워주고 메시지받은 시간에 따라 친구리스트 정렬 바꾸기 완성 ,새로운메시지가 오면 새로운 메시지 알려주고 최상단으로 리스트 순서 변경,읽지 않은 메시지 카운트해서 표시하기 완성" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,25 +53,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/work/java/source/java_git/Git_clone/project_01",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
-    "spring.configuration.checksum": "aeac2c31e88463ef2e8a36fd6ec694d6"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/work/java/source/java_git/Git_clone/project_01&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;aeac2c31e88463ef2e8a36fd6ec694d6&quot;
   },
-  "keyToStringList": {
-    "GitStage.ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\work\java\source\java_git\Git_clone\project_01\src\main\resources\mapper" />
@@ -210,6 +190,7 @@
       <workItem from="1655422715395" duration="37327000" />
       <workItem from="1655547957789" duration="35640000" />
       <workItem from="1655609632129" duration="32289000" />
+      <workItem from="1655681874411" duration="34340000" />
     </task>
     <task id="LOCAL-00001" summary="메신져 개인 프로젝트 시작">
       <created>1654567311453</created>
