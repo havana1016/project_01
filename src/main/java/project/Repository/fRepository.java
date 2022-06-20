@@ -14,12 +14,7 @@ public class fRepository {
     SqlSessionTemplate sql;
     public int yesf(fDto fr) {
 
-        int result=sql.insert("fr.save",fr);
-        sql.update("fr.logc",fr);
-        mDto mem=sql.selectOne("mem.findid",fr.getFid());
-        if(mem.getLogc()==1){
-        sql.update("fr.logc",fr);}
-        return result;
+         return sql.insert("fr.save",fr);
 
     }
 
@@ -41,9 +36,7 @@ public class fRepository {
     }
 
     public int delfr(fDto mem) {
-        int result=sql.delete("fr.delfr",mem);
-        System.out.println("fRepository.delfr");
-        System.out.println("result= " + result);
-        return result;
+        return sql.delete("fr.delfr",mem);
+
     }
 }

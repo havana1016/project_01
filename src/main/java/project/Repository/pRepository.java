@@ -19,8 +19,6 @@ public class pRepository {
 
     public pDto pfrc(pDto mem) {
         pDto result=sql.selectOne("pfr.pfrc",mem);
-        System.out.println("pRepository.pfrc");
-        System.out.println("result: "+result);
         return result;
     }
 

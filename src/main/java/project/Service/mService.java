@@ -17,19 +17,15 @@ public class mService {
     }
 
     public int save(mDto mem) throws IOException {
-        // return mr.save(mem);
-        System.out.println("start : "+mem);
         String mfname = mem.getMf().getOriginalFilename();//2
         mfname =System.currentTimeMillis()+"-"+mfname;//2.1
         mem.setMfname(mfname);//3
-        String savePath ="d:\\spring_img\\"+mfname;//4
+        String savePath ="c:\\spring_img\\"+mfname;//4
 
         if(!mem.getMf().isEmpty()){
             mem.getMf().transferTo(new File(savePath));
-            //파일이 비어있지 않다면 그 파일을 세이브 패스 경로에 옮겨라(저장해라)
-            //나를 호출한 대로 이 익셉션을 던지겠다(예외처리)
+
         }//5
-        System.out.println("end : "+mem);
         return mr.save(mem);//6}
     }
 

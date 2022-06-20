@@ -35,8 +35,7 @@ public class fController {
     @GetMapping("logc")
     @ResponseBody Integer logcount(@RequestParam("mid")String mid){
          Integer result=fs.logcount(mid);
-        System.out.println("fController.logcount");
-        System.out.println("result = " + result);
+
         if (result==null){
             result=0;
         }
@@ -46,7 +45,6 @@ public class fController {
     @GetMapping("delfr")
     @ResponseBody int delfr(@ModelAttribute fDto mem){
         ps.delfr(mem);
-
         return fs.delfr(mem);
     }
 

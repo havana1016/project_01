@@ -4,7 +4,7 @@
 
 
 <mapper namespace="mem">
-    <select id="findid" resultType="mdto" parameterType="mdto">
+    <select id="findid" resultType="mdto" >
         select * from mtable where mid=#{mid}
     </select>
     <insert id="save">

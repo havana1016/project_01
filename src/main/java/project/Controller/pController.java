@@ -28,7 +28,6 @@ public class pController {
     @GetMapping("save")
     @ResponseBody String save(@ModelAttribute pDto mem, HttpSession session){
         mDto mem1=new mDto();
-//        mDto mem2=new mDto();
 
         mem1.setMid(mem.getYid());
         mDto result=ms.findid(mem1);
@@ -45,8 +44,6 @@ public class pController {
     @GetMapping("pfrc")
     @ResponseBody pDto pfrc(@ModelAttribute pDto mem){
         pDto result=ps.pfrc(mem);
-        System.out.println("pController.pfrc");
-        System.out.println(result.getFbool());
         return result;
     }
     @GetMapping("myfr")

@@ -1,5 +1,6 @@
 package project.Service;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.Dto.fDto;
@@ -13,6 +14,8 @@ import java.util.List;
 public class fService {
     @Autowired
     fRepository fr;
+    @Autowired
+    SqlSessionTemplate sql;
     public int yesf(String pid,String pfname,String yid,String yfname) {
         fDto friend= new fDto();
         fDto friend1= new fDto();
@@ -24,6 +27,15 @@ public class fService {
         friend1.setFid(yid);
         friend1.setFfname(yfname);
         int b=fr.yesf(friend1);
+        mDto mem=sql.selectOne("mem.findid",friend);
+        mDto mem1=sql.selectOne("mem.findid",friend1);
+        if(mem.getLogc()==1){
+            fr.logc(mem);
+        }
+        if(mem1.getLogc()==1){
+            fr.logc(mem1);
+        }
+
         if(a>0 && b>0){
             return 1;
     }return 0;

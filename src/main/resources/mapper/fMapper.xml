@@ -10,9 +10,7 @@
     <select id="findall" resultType="fdto">
         select * from ftable where mid=#{mid} order by mtime desc
     </select>
-<!--    <select id="findall" resultType="fdto">-->
-<!--        select * from ftable where mid=#{mid}-->
-<!--    </select>-->
+
     <update id="mtime">
         update ftable set mtime=#{mtime} where mid=#{mget} and fid=#{mset}
     </update>
@@ -20,10 +18,6 @@
     <update id="logc">
         update ftable set logc=1 where fid=#{mid}
     </update>
-
-<!--    <update id="logc1">-->
-<!--        update ftable set logc=1 where fid=#{mid}-->
-<!--    </update>-->
 
     <update id="logc2">
         update ftable set logc=1 where fid=#{fid}
@@ -42,9 +36,7 @@
         delete from ftable where mid=#{mid} and fid=#{fid} or mid=#{fid} and fid=#{mid}
     </delete>
 
-<!--    <update id="mtime">-->
-<!--        update ftable set mtime=#{mtime} where mid=#{mset} and fid=#{mget} or mid=#{mget} and fid=#{mset}-->
-<!--    </update>-->
+
 </mapper>
 
 

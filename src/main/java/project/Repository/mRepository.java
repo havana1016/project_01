@@ -11,8 +11,7 @@ public class mRepository {
     SqlSessionTemplate sql;
     public mDto findid(mDto mem) {
         String mid=mem.getMid();
-        mDto result=sql.selectOne("mem.findid",mid);
-               return result;
+        return sql.selectOne("mem.findid",mid);
     }
 
     public int save(mDto mem) {

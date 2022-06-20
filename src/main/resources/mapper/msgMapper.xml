@@ -8,10 +8,7 @@
     insert into msgtable (mset,mget,msg,mtime,sfname,gfname)
     values (#{mset},#{mget},#{msg},now(),#{sfname},#{gfname})
 </insert>
-<!--    <insert id="save">-->
-<!--        insert into msgtable (mset,mget,msg,mtime)-->
-<!--        values (#{mset},#{mget},#{msg},now())-->
-<!--    </insert>-->
+
 <select id="findmsg" resultType="msg">
     select * from msgtable where mset=#{mset} and mget=#{mget} or mset=#{mget} and mget=#{mset}
 </select>
@@ -27,9 +24,7 @@
     <select id="mcount1" resultType="int">
         select sum(seeint) from msgtable where mget=#{mget} or mset=#{mget}
     </select>
-<!--    <select id="mtime" resultType="String">-->
-<!--        select  max(mtime) from msgtable where mset=#{mset} and mget=#{mget} or mget=#{mset} and mset=#{mget}-->
-<!--    </select>-->
+
     <select id="mtime" resultType="String">
         select  max(mtime) from msgtable where mset=#{mset} and mget=#{mget}
     </select>

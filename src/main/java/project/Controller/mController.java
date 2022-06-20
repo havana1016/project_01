@@ -33,6 +33,8 @@ public class mController  {
     String save(@ModelAttribute mDto mem,HttpSession session) throws IOException {
         if(ms.save(mem)>0){
             session.setAttribute("logmem",mem);
+            fs.logc(mem);
+            ms.logc(mem);
             return "/member/main";
         }return null;
 
@@ -55,9 +57,7 @@ public class mController  {
     }
     @GetMapping("search")
     @ResponseBody mDto search(@ModelAttribute mDto mem, Model model){
-        System.out.println("mController.search");
         mDto result=ms.findid(mem);
-        System.out.println(result);
         model.addAttribute("smem",result);
 
             return result;
