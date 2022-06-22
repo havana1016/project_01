@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="mem">
+    <select id="findid" resultType="mdto" >
+        select * from mtable where mid=#{mid}
+    </select>
+    <insert id="save">
+        insert into mtable (mid,mpw,mfname) values (#{mid},#{mpw},#{mfname})
+    </insert>
+
+<update id="logc">
+    update mtable set logc=1 where mid=#{mid}
+</update>
+
+    <update id="logoutc">
+        update mtable set logc=0 where mid=#{mid}
+    </update>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

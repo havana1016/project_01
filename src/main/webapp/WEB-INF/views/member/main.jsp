@@ -31,6 +31,13 @@
     </style>
     <script>
 
+
+        function enter() {
+            if (window.event.keyCode == 13) {
+                document.getElementById("sendbtn").click();
+            }
+        }
+
         let msgdb;
         let frdb;
         let pfrdb;
@@ -222,7 +229,7 @@
                 html+='<h3 class="mt-4" style="margin-left: 30px">'+fid+'</h3></td></tr></table>'
 
                 zone.innerHTML=html;
-                let html2='<textarea style="" class="form-control mb-2" id="msg" cols="20" wrap="physical"></textarea>'
+                let html2='<textarea style="" class="form-control mb-2" id="msg" cols="20" wrap="physical" onkeyup="enter()"></textarea>'
                 html2+='<button type="button" style="border: gray 1px solid;color: #5c636a" class="btn btn-outline-light" data-bs-dismiss="modal" id="closemodal" onclick="flist()" >Close</button>'
                 html2+='<button type="button" class="btn btn-secondary " id="sendbtn" onclick="savemsg('+"'"+fid+"'"+",'"+ffname+"'"+')">Send</button>'
                 footer.innerHTML=html2;
